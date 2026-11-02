@@ -55,7 +55,7 @@ const verificationUrl =
     <!-- Header -->
     <section class="rounded-2xl border border-[#33ff00]/20 bg-[#0a100d] p-8 md:p-12">
       <p class="mb-4 font-mono text-xs tracking-[0.3em] text-[#33ff00]">
-        SYSTEM_RECORDS / ACHIEVEMENTS
+       ACHIEVEMENTS
       </p>
 
       <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
@@ -72,7 +72,7 @@ const verificationUrl =
       <div class="mt-8 flex items-center gap-3">
         <span class="h-px w-12 bg-[#33ff00]"></span>
         <span class="font-mono text-xs tracking-widest text-[#33ff00]/70">
-          VERIFIED_LEARNING_RECORDS
+          VERIFICATION
         </span>
       </div>
     </section>
@@ -80,7 +80,7 @@ const verificationUrl =
     <!-- Archive Information -->
     <div class="flex items-center justify-between">
       <p class="font-mono text-xs tracking-[0.2em] text-white/50">
-        CERTIFICATE_ARCHIVE
+        CERTIFICATES
       </p>
 
       <span class="rounded-full border border-[#33ff00]/30 bg-[#33ff00]/5 px-4 py-2 font-mono text-xs text-[#33ff00]">
@@ -118,7 +118,6 @@ const verificationUrl =
         <div class="p-6">
           <div class="mb-4 flex items-center justify-between gap-2">
             <span class="font-mono text-xs tracking-widest text-[#33ff00]/60">
-              RECORD / {{ certificate.number }}
             </span>
 
             <span class="rounded-md border border-[#33ff00]/20 px-2 py-1 font-mono text-[9px] tracking-wider text-[#33ff00]/80">
@@ -126,7 +125,7 @@ const verificationUrl =
             </span>
           </div>
 
-          <h2 class="text-lg font-black leading-snug text-white transition-colors duration-300 group-hover:text-[#33ff00]">
+          <h2 class="text-3xl font-black leading-snug text-white transition-colors duration-300 group-hover:text-[#33ff00]">
             {{ certificate.title }}
           </h2>
 
@@ -160,11 +159,5 @@ const verificationUrl =
         </div>
       </article>
     </div>
-
-    <!-- Footer Note -->
-    <p class="pb-4 text-center font-mono text-[10px] tracking-wider text-white/30">
-      END_OF_CREDENTIAL_ARCHIVE // CONTINUOUS_LEARNING
-    </p>
-
   </div>
 </template>

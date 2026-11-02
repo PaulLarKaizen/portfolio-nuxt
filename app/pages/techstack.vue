@@ -36,7 +36,7 @@ const categories = [
   <div class="mx-auto max-w-5xl space-y-8">
     <section class="rounded-2xl border border-[#33ff00]/20 bg-[#0a100d] p-8 md:p-12">
       <p class="mb-4 font-mono text-xs tracking-[0.3em] text-[#33ff00]">
-        SYSTEM_DATABASE / TECHNOLOGIES
+        TECHNOLOGIES
       </p>
 
       <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
@@ -52,7 +52,7 @@ const categories = [
       <div class="mt-8 flex items-center gap-3">
         <span class="h-px w-12 bg-[#33ff00]"></span>
         <span class="font-mono text-xs tracking-widest text-[#33ff00]/70">
-          TECHNOLOGY_INVENTORY
+          INVENTORY
         </span>
       </div>
     </section>
@@ -66,7 +66,7 @@ const categories = [
         <div class="mb-6 flex items-start justify-between">
           <div>
             <p class="font-mono text-xs tracking-[0.25em] text-[#33ff00]/60">
-              CATEGORY / {{ category.number }}
+          
             </p>
 
             <h2 class="mt-3 text-xl font-black text-white">

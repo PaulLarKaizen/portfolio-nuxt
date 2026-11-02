@@ -18,9 +18,7 @@ useSeoMeta({
     <section class="relative overflow-hidden rounded-2xl border border-[#33ff00]/20 bg-[#0a100d] p-8 md:p-12">
       <div class="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#33ff00]/5 blur-3xl"></div>
 
-      <p class="mb-4 font-mono text-xs tracking-[0.3em] text-[#33ff00]">
-        PROFILE_DATABASE / 001
-      </p>
+
 
       <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
         GET TO
@@ -36,7 +34,7 @@ useSeoMeta({
       <div class="mt-8 flex items-center gap-3">
         <span class="h-px w-12 bg-[#33ff00]"></span>
         <span class="font-mono text-xs tracking-widest text-[#33ff00]/70">
-          BACKGROUND_AND_INTERESTS
+          BACKGROUND AND INTERESTS
         </span>
       </div>
     </section>
@@ -45,24 +43,23 @@ useSeoMeta({
     <div class="grid gap-6 md:grid-cols-2">
 
       <ContentCard
-        title="MY BACKGROUND"
-        subtitle="01 / FOUNDATION"
+        subtitle="FOUNDATION"
+        title="BACKGROUND"
       >
         <p class="leading-8">
           I am an IT student with an interest in
-          <span class="font-semibold text-[#33ff00]">digital privacy</span>
-          and modern technology systems.
+          <span class="font-semibold text-[#33ff00]">digital security and privacy</span>
         </p>
 
         <p class="mt-5 leading-8">
-          I have developed a foundation in database management,
-          software development, and basic network configurations.
+          Developed a foundation in database management,
+          software development, and network configurations.
         </p>
       </ContentCard>
 
       <ContentCard
-        title="MY INTERESTS"
-        subtitle="02 / EXPLORATION"
+        title="INTERESTS"
+        subtitle="EXPLORATION"
       >
         <p class="leading-8">
           I enjoy solving logical problems and exploring the intricacies of software development and networking.
@@ -92,11 +89,11 @@ useSeoMeta({
 
       <div class="relative">
         <p class="mb-3 font-mono text-xs tracking-[0.25em] text-[#33ff00]">
-          03 / FUTURE_DIRECTION
+          CAREER DIRECTION
         </p>
 
         <h2 class="text-2xl font-black text-white md:text-3xl">
-          MY CYBERSECURITY GOAL
+          CYBERSECURITY GOAL
         </h2>
 
         <p class="mt-5 max-w-3xl leading-8 text-white/70">
