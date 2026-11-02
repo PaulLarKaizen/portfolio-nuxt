@@ -19,7 +19,7 @@
       </h2>
 
       <p class="mt-1 text-sm font-bold tracking-widest text-[#33ff00]">
-        Aspiring Cybersecurity Professional 
+        Aspiring Cybersecurity Professional
       </p>
 
       <p class="mt-3 text-xs uppercase tracking-wider text-white/50">
@@ -36,23 +36,46 @@
 
       <!-- Status -->
       <div
-        class="mt-8 flex w-full items-center justify-center gap-2 rounded-lg border border-[#33ff00]/20 bg-[#33ff00]/5 px-3 py-3"
+        class="card mt-8 flex w-full items-center justify-center gap-2 rounded-lg border border-[#33ff00]/20 bg-[#33ff00]/5 px-3 py-3 shadow-none"
       >
         <span class="h-2 w-2 animate-pulse rounded-full bg-[#33ff00]"></span>
-        <span class="font-mono text-[0.65rem] tracking-wider text-[#33ff00]">
-          AVAILABLE TO LEARN
+
+        <span class="font-mono text-[0.6rem] tracking-wider text-[#33ff00]">
+          Kaizen - Continuous Improvement
         </span>
       </div>
 
-      <!-- Social links: add actual URLs later -->
+      <!-- Social links -->
       <div class="mt-8 w-full border-t border-white/10 pt-5">
-        <p class="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-white/40">
+        <p
+          class="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-white/40"
+        >
           CONNECT
         </p>
 
-        <p class="text-xs text-white/50">
-          Social links will be added here.
-        </p>
+        <div class="flex flex-col gap-3">
+          <!-- GitHub -->
+          <a
+            href="https://github.com/PaulLarKaizen"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-ghost btn-sm w-full justify-center gap-2 border border-[#33ff00]/20 text-xs text-[#33ff00] transition-all duration-300 hover:border-[#33ff00]/60 hover:bg-[#33ff00]/10 hover:text-white"
+          >
+            GitHub
+            <span aria-hidden="true">↗</span>
+          </a>
+
+          <!-- LinkedIn -->
+          <a
+            href="https://www.linkedin.com/in/cyril-larga/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-ghost btn-sm w-full justify-center gap-2 border border-[#33ff00]/20 text-xs text-[#33ff00] transition-all duration-300 hover:border-[#33ff00]/60 hover:bg-[#33ff00]/10 hover:text-white"
+          >
+            LinkedIn
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
     </div>
   </aside>
