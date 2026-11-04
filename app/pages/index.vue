@@ -82,10 +82,10 @@ onUnmounted(() => {
     class="page-enter mx-auto flex max-w-6xl items-center lg:min-h-[calc(100svh-14rem)]"
   >
     <section
-      class="grid w-full items-center gap-10 py-4 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8 lg:py-0"
+      class="grid w-full min-w-0 items-center gap-10 py-4 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8 lg:py-0"
     >
       <!-- LEFT: HERO INTRODUCTION -->
-      <div class="space-y-5">
+      <div class="min-w-0 space-y-5">
         <!-- Status -->
         <div
           class="inline-flex items-center gap-3 rounded-full border border-[#33ff00]/25 bg-[#33ff00]/5 px-4 py-2 font-mono text-xs tracking-[0.18em] text-[#33ff00]"
@@ -98,32 +98,33 @@ onUnmounted(() => {
               class="relative inline-flex h-2 w-2 rounded-full bg-[#33ff00]"
             ></span>
           </span>
-          IT STUDENT // ALWAYS LEARNING
+          ACTIVE//
         </div>
 
         <!-- Main heading -->
-        <div class="space-y-2">
+        <div class="min-w-0 space-y-3">
           <p class="font-mono text-xs uppercase tracking-[0.35em] text-white/45">
-            Hello, I'm
+            I'm
           </p>
 
           <h1
-            class="text-5xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl xl:text-7xl"
+            class="w-full text-4xl font-black leading-[1.2] tracking-tight text-white sm:text-5xl lg:text-[3.4rem] xl:text-6xl"
           >
             Cyril John
             <span
-              class="block bg-gradient-to-r from-[#33ff00] via-[#8cff72] to-rose-500 bg-clip-text text-transparent"
+              class="block whitespace-nowrap bg-gradient-to-r from-[#33ff00] via-[#8cff72] to-rose-500 bg-clip-text pb-2 text-transparent"
             >
               Paul Larga.
             </span>
           </h1>
 
-          <div class="flex items-center gap-3 pt-2">
+          <div class="flex flex-wrap items-center gap-3 pt-2">
             <div
-              class="h-[2px] w-10 bg-rose-500 shadow-[0_0_12px_rgba(255,0,60,0.8)]"
+              class="h-[2px] w-10 shrink-0 bg-rose-500 shadow-[0_0_12px_rgba(255,0,60,0.8)]"
             ></div>
+
             <p class="font-mono text-xs tracking-[0.2em] text-rose-400 sm:text-sm">
-              BUILDING. LEARNING. EVOLVING.
+              LEARN. BUILD. AND EVOLVE.
             </p>
           </div>
         </div>
@@ -133,7 +134,7 @@ onUnmounted(() => {
           Exploring the world of
           <span class="font-semibold text-white">software development</span>,
           <span class="font-semibold text-white">cybersecurity</span>, and
-          <span class="font-semibold text-white">system defense</span>.
+          <span class="font-semibold text-white">Artificial Intelligence</span>.
           I'm continuously developing my skills, experimenting with technology,
           and learning how to build more reliable digital systems.
         </p>
@@ -157,17 +158,6 @@ onUnmounted(() => {
             About Me
             <span>&#8599;</span>
           </NuxtLink>
-        </div>
-
-        <!-- Bottom label -->
-        <div
-          class="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-white/10 pt-4 font-mono text-[10px] tracking-[0.15em] text-white/35"
-        >
-          <span>PORTFOLIO 2026</span>
-          <span class="text-[#33ff00]/60">&#9679;</span>
-          <span>TECHNOLOGY</span>
-          <span class="text-rose-500/70">&#9679;</span>
-          <span>CONTINUOUS GROWTH</span>
         </div>
       </div>
 
@@ -211,11 +201,6 @@ onUnmounted(() => {
                 <span class="terminal-cursor"></span>
               </p>
 
-              <p class="mt-2 text-white">
-                <span class="text-rose-400">const</span>
-                developer = {
-              </p>
-
               <div class="space-y-1.5 pl-5 text-white/70">
                 <p>
                   <span class="text-[#33ff00]">name:</span>
@@ -231,7 +216,7 @@ onUnmounted(() => {
                 </p>
                 <p>
                   <span class="text-[#33ff00]">mindset:</span>
-                  "Always Learning"
+                  "Kaizen"
                 </p>
               </div>
 
@@ -282,7 +267,7 @@ onUnmounted(() => {
 
               <p class="mt-4 text-[11px] text-white/45">
                 <span class="text-[#33ff00]">&gt;</span>
-                status: continuously_learning
+                status: Kaizen
                 <span class="terminal-cursor ml-1"></span>
               </p>
             </div>
