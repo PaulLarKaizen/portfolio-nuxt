@@ -10,7 +10,7 @@ const currentYear = new Date().getFullYear()
       <p class="font-mono text-xs tracking-wider text-white/50">
         © {{ currentYear }}
         <span class="font-bold text-[#33ff00]">
-          CYRIL JOHN PAUL A. LARGA
+          CYRIL JOHN PAUL LARGA
         </span>
       </p>
 
