@@ -1,3 +1,172 @@
 
 @import "tailwindcss";
 @plugin "daisyui";
+
+/* ========================================
+   GLOBAL PAGE ANIMATIONS
+======================================== */
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 0, 60, 0.08);
+  }
+
+  50% {
+    box-shadow: 0 0 14px rgba(255, 0, 60, 0.18);
+  }
+}
+
+@keyframes glowLine {
+  from {
+    opacity: 0.4;
+    transform: scaleX(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Page entrance */
+.page-enter {
+  animation: pageEnter 0.7s ease-out both;
+}
+
+/* Stagger direct page sections */
+.page-enter > * {
+  animation: pageEnter 0.7s ease-out both;
+}
+
+.page-enter > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.page-enter > *:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.page-enter > *:nth-child(3) {
+  animation-delay: 0.19s;
+}
+
+.page-enter > *:nth-child(4) {
+  animation-delay: 0.26s;
+}
+
+.page-enter > *:nth-child(5) {
+  animation-delay: 0.33s;
+}
+
+/* ========================================
+   NEON PANELS AND CARDS
+======================================== */
+
+.neon-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(51, 255, 0, 0.2);
+  background: rgba(10, 16, 13, 0.88);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.neon-panel:hover {
+  border-color: rgba(255, 0, 60, 0.65);
+  box-shadow:
+    0 0 12px rgba(255, 0, 60, 0.12),
+    0 0 30px rgba(255, 0, 60, 0.08),
+    0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.neon-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(51, 255, 0, 0.2);
+  background: rgba(10, 16, 13, 0.88);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.neon-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 0, 60, 0.7);
+  background: rgba(15, 13, 15, 0.95);
+  box-shadow:
+    0 0 10px rgba(255, 0, 60, 0.16),
+    0 0 28px rgba(255, 0, 60, 0.1),
+    0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Red accent line */
+.neon-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: #ff003c;
+  opacity: 0;
+  box-shadow: 0 0 12px rgba(255, 0, 60, 0.8);
+  transition: opacity 0.35s ease;
+}
+
+.neon-card:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   INTERACTIVE NEON ELEMENTS
+======================================== */
+
+.neon-interactive {
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.neon-interactive:hover {
+  border-color: rgba(255, 0, 60, 0.65);
+  box-shadow: 0 0 16px rgba(255, 0, 60, 0.12);
+}
+
+.neon-line {
+  transform-origin: left;
+  animation: glowLine 0.8s ease-out both;
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
