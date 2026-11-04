@@ -79,16 +79,29 @@ onUnmounted(() => {
 
 <template>
   <div
-    class="page-enter mx-auto flex max-w-6xl items-center lg:min-h-[calc(100svh-14rem)]"
+    class="hero-page page-enter relative isolate mx-auto flex max-w-6xl items-center lg:min-h-[calc(100svh-14rem)]"
   >
+    <!-- Background atmosphere -->
+    <div
+      class="hero-atmosphere pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+    >
+      <div class="hero-grid absolute inset-0"></div>
+
+      <div class="hero-glow hero-glow-green"></div>
+      <div class="hero-glow hero-glow-red"></div>
+
+      <div class="hero-orbit hero-orbit-one"></div>
+      <div class="hero-orbit hero-orbit-two"></div>
+    </div>
+
     <section
-      class="grid w-full min-w-0 items-center gap-10 py-4 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8 lg:py-0"
+      class="relative grid w-full min-w-0 items-center gap-12 py-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:py-0"
     >
       <!-- LEFT: HERO INTRODUCTION -->
-      <div class="min-w-0 space-y-5">
+      <div class="hero-intro relative min-w-0 space-y-6">
         <!-- Status -->
         <div
-          class="inline-flex items-center gap-3 rounded-full border border-[#33ff00]/25 bg-[#33ff00]/5 px-4 py-2 font-mono text-xs tracking-[0.18em] text-[#33ff00]"
+          class="hero-status inline-flex items-center gap-3 rounded-full border border-[#33ff00]/25 bg-[#33ff00]/5 px-4 py-2 font-mono text-xs tracking-[0.18em] text-[#33ff00]"
         >
           <span class="relative flex h-2 w-2">
             <span
@@ -99,32 +112,76 @@ onUnmounted(() => {
             ></span>
           </span>
           ACTIVE//
+          <span class="h-3 w-px bg-[#33ff00]/30"></span>
+          <span class="text-white/40">SYSTEM READY</span>
         </div>
 
         <!-- Main heading -->
-        <div class="min-w-0 space-y-3">
-          <p class="font-mono text-xs uppercase tracking-[0.35em] text-white/45">
-            I'm
-          </p>
+        <div class="min-w-0 space-y-4">
+          <div class="flex items-center gap-3">
+            <span
+              class="h-[2px] w-8 rounded-full bg-[#33ff00] shadow-[0_0_10px_rgba(51,255,0,0.8)]"
+            ></span>
 
-          <h1
-            class="w-full text-4xl font-black leading-[1.2] tracking-tight text-white sm:text-5xl lg:text-[3.4rem] xl:text-6xl"
-          >
-            <ScrambleText text="Cyril John" />
-            <ScrambleText
-              text="Paul Larga"
-              class="block whitespace-nowrap bg-gradient-to-r from-[#33ff00] via-[#8cff72] to-rose-500 bg-clip-text pb-2 text-transparent"
-            />
-          </h1>
+            <span
+              class="font-mono text-[10px] tracking-[0.25em] text-[#33ff00]/60"
+            >
+              USER_PROFILE
+            </span>
+          </div>
 
-          <div class="flex flex-wrap items-center gap-3 pt-2">
+          <!-- Name -->
+          <div class="hero-name-wrap relative">
+            <h1
+              aria-label="Cyril John Paul Larga"
+              class="hero-name relative w-full min-w-0 font-black leading-[0.98] tracking-[-0.065em]"
+            >
+              <span class="name-first block">
+                <ScrambleText text="Cyril John" />
+              </span>
+
+              <span
+                class="name-second mt-2 flex flex-wrap items-baseline gap-x-3"
+              >
+                <span>
+                  <ScrambleText text="Paul" />
+                </span>
+
+                <span>
+                  <ScrambleText text="Larga" />
+                </span>
+              </span>
+            </h1>
+
+            <!-- Name underline -->
             <div
-              class="h-[2px] w-10 shrink-0 bg-rose-500 shadow-[0_0_12px_rgba(255,0,60,0.8)]"
-            ></div>
+              class="name-underline mt-6 flex h-[3px] w-full max-w-[21rem] overflow-hidden rounded-full"
+            >
+              <span class="underline-main"></span>
+              <span class="underline-light"></span>
+            </div>
 
-            <p class="font-mono text-xs tracking-[0.2em] text-rose-400 sm:text-sm">
+            <div class="name-corner" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+          <!-- Motto -->
+          <div class="flex flex-wrap items-center gap-3 pt-1">
+            <p
+              class="font-mono text-xs font-semibold tracking-[0.2em] text-[#33ff00] sm:text-sm"
+            >
               LEARN. BUILD. AND EVOLVE.
             </p>
+
+            <span class="h-1 w-1 rounded-full bg-white/30"></span>
+
+            <span
+              class="font-mono text-[10px] tracking-widest text-white/35"
+            >
+              KAIZEN
+            </span>
           </div>
         </div>
 
@@ -145,33 +202,47 @@ onUnmounted(() => {
             class="group inline-flex items-center gap-3 rounded-xl border border-[#33ff00]/50 bg-[#33ff00]/10 px-5 py-3 text-sm font-semibold text-[#33ff00] shadow-[0_0_18px_rgba(51,255,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#33ff00] hover:bg-[#33ff00]/15 hover:shadow-[0_0_25px_rgba(51,255,0,0.2)]"
           >
             Explore My Skills
-            <span class="transition-transform duration-300 group-hover:translate-x-1">
+            <span
+              class="transition-transform duration-300 group-hover:translate-x-1"
+            >
               &rarr;
             </span>
           </NuxtLink>
 
           <NuxtLink
             to="/about"
-            class="inline-flex items-center gap-3 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/80 transition-all duration-300 hover:-translate-y-1 hover:border-rose-500/60 hover:text-rose-400 hover:shadow-[0_0_22px_rgba(255,0,60,0.12)]"
+            class="inline-flex items-center gap-3 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/80 transition-all duration-300 hover:-translate-y-1 hover:border-[#33ff00]/60 hover:text-[#33ff00] hover:shadow-[0_0_22px_rgba(51,255,0,0.12)]"
           >
             About Me
             <span>&#8599;</span>
           </NuxtLink>
         </div>
+
+        <!-- Decorative system footer -->
+        <div
+          class="flex items-center gap-3 pt-3 font-mono text-[9px] tracking-[0.2em] text-white/25"
+        >
+          <span class="text-[#33ff00]/60">SYS://</span>
+          <span>CONTINUOUS DEVELOPMENT</span>
+          <span class="h-px w-8 bg-white/15"></span>
+          <span>2026</span>
+        </div>
       </div>
 
       <!-- RIGHT: SYSTEM TERMINAL -->
-      <div class="relative mx-auto w-full max-w-md">
-        <!-- Background glow -->
+      <div class="terminal-stage relative mx-auto w-full max-w-md">
         <div
-          class="absolute -inset-6 rounded-full bg-[#33ff00]/5 blur-3xl"
+          class="absolute -inset-8 rounded-full bg-[#33ff00]/5 blur-3xl"
         ></div>
 
+        <div class="terminal-orbit terminal-orbit-green"></div>
+        <div class="terminal-orbit terminal-orbit-red"></div>
+
         <div
-          class="neon-panel terminal-shell relative rounded-2xl border border-[#33ff00]/20 bg-[#080d0b]/90 p-4 shadow-[0_0_35px_rgba(51,255,0,0.06),0_20px_60px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:p-5"
+          class="neon-panel terminal-shell relative overflow-hidden rounded-2xl border border-[#33ff00]/25 bg-[#080d0b]/95 p-4 shadow-[0_0_35px_rgba(51,255,0,0.08),0_20px_60px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:p-5"
         >
-          <!-- Animated overlays -->
           <div class="terminal-scan" aria-hidden="true"></div>
+          <div class="terminal-border-glow" aria-hidden="true"></div>
 
           <!-- Terminal header -->
           <div
@@ -186,11 +257,16 @@ onUnmounted(() => {
             <span class="font-mono text-[10px] tracking-[0.2em] text-white/45">
               SYSTEM_PROFILE.exe
             </span>
+
+            <span class="font-mono text-[9px] text-[#33ff00]/60">
+              v1.0
+            </span>
           </div>
 
           <!-- Terminal content -->
-          <div class="terminal-content relative space-y-4 py-4 font-mono text-xs sm:text-sm">
-            <!-- User profile -->
+          <div
+            class="terminal-content relative space-y-4 py-4 font-mono text-xs sm:text-sm"
+          >
             <div>
               <p class="mb-2 text-[#33ff00]/70">// USER PROFILE</p>
 
@@ -242,11 +318,11 @@ onUnmounted(() => {
                 <div>
                   <div class="mb-1.5 flex justify-between">
                     <span class="text-white/75">Cybersecurity</span>
-                    <span class="text-rose-400">02</span>
+                    <span class="text-[#33ff00]">02</span>
                   </div>
                   <div class="h-1 overflow-hidden rounded-full bg-white/10">
                     <div
-                      class="terminal-progress-fill terminal-progress-red h-full w-[60%] rounded-full bg-rose-500 shadow-[0_0_10px_#ff003c]"
+                      class="terminal-progress-fill terminal-progress-red h-full w-[60%] rounded-full bg-[#33ff00] shadow-[0_0_10px_#33ff00]"
                     ></div>
                   </div>
                 </div>
@@ -283,12 +359,329 @@ onUnmounted(() => {
 
         <!-- Floating decorative label -->
         <div
-          class="absolute -bottom-4 -left-3 rounded-lg border border-rose-500/30 bg-[#10090c] px-3 py-2 font-mono text-[10px] text-rose-400 shadow-[0_0_20px_rgba(255,0,60,0.12)] sm:-left-6"
+          class="terminal-floating-label absolute -bottom-4 -left-3 rounded-lg border border-[#33ff00]/30 bg-[#080d0b] px-3 py-2 font-mono text-[10px] text-[#33ff00] shadow-[0_0_20px_rgba(51,255,0,0.12)] sm:-left-6"
         >
           <span class="mr-2">&#10022;</span>
           SYSTEMS THINKER
+        </div>
+
+        <!-- Corner status -->
+        <div
+          class="absolute -right-2 -top-4 font-mono text-[9px] tracking-widest text-[#33ff00]/50 sm:-right-5"
+        >
+          <span class="animate-pulse">●</span>
+          LIVE MONITORING
         </div>
       </div>
     </section>
   </div>
 </template>
+
+<style scoped>
+/* HERO BACKGROUND */
+
+.hero-page {
+  isolation: isolate;
+}
+
+.hero-grid {
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(51, 255, 0, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 255, 0, 0.055) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+  animation: grid-drift 25s linear infinite;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.hero-glow-green {
+  top: 5%;
+  left: -12%;
+  background: rgba(51, 255, 0, 0.08);
+  animation: glow-float 9s ease-in-out infinite alternate;
+}
+
+.hero-glow-red {
+  right: -12%;
+  bottom: 5%;
+  background: rgba(51, 255, 0, 0.045);
+  animation: glow-float 11s ease-in-out infinite alternate-reverse;
+}
+
+.hero-orbit {
+  position: absolute;
+  border: 1px solid rgba(51, 255, 0, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-orbit-one {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  right: -100px;
+  animation: orbit-rotate 35s linear infinite;
+}
+
+.hero-orbit-two {
+  width: 420px;
+  height: 420px;
+  top: 0;
+  right: -160px;
+  border-color: rgba(51, 255, 0, 0.06);
+  animation: orbit-rotate 50s linear infinite reverse;
+}
+
+/* NAME TYPOGRAPHY AND LEVITATION */
+
+.hero-name-wrap {
+  padding: 0.5rem 0;
+}
+
+.hero-name {
+  font-size: clamp(3rem, 6.4vw, 5.2rem);
+  overflow-wrap: normal;
+  color: #baffaa;
+  text-shadow:
+    0 0 8px rgba(51, 255, 0, 0.2),
+    0 0 22px rgba(51, 255, 0, 0.16),
+    0 0 45px rgba(51, 255, 0, 0.08);
+  animation: name-levitate 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.name-first,
+.name-second {
+  color: inherit;
+}
+
+.name-second {
+  font-size: clamp(3.3rem, 7.1vw, 5.8rem);
+}
+
+.name-underline {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 12px rgba(51, 255, 0, 0.08);
+}
+
+.underline-main {
+  width: 70%;
+  background: #33ff00;
+  box-shadow: 0 0 12px #33ff00;
+  animation: underline-pulse 4s ease-in-out infinite;
+}
+
+.underline-light {
+  width: 30%;
+  background: rgba(186, 255, 170, 0.45);
+}
+
+.name-corner {
+  position: absolute;
+  top: -10px;
+  right: 5%;
+  width: 20px;
+  height: 20px;
+  opacity: 0.5;
+}
+
+.name-corner span:first-child {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 1px;
+  background: #33ff00;
+}
+
+.name-corner span:last-child {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 10px;
+  background: #33ff00;
+}
+
+/* TERMINAL */
+
+.terminal-stage {
+  isolation: isolate;
+}
+
+.terminal-shell {
+  transform: translateZ(0);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
+}
+
+.terminal-shell:hover {
+  transform: translateY(-4px);
+  border-color: rgba(51, 255, 0, 0.42);
+  box-shadow:
+    0 0 45px rgba(51, 255, 0, 0.1),
+    0 20px 65px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-border-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(51, 255, 0, 0.8),
+    transparent
+  );
+  animation: border-sweep 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.terminal-orbit {
+  position: absolute;
+  z-index: -1;
+  border: 1px solid;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.terminal-orbit-green {
+  width: 110px;
+  height: 110px;
+  top: -35px;
+  right: -30px;
+  border-color: rgba(51, 255, 0, 0.13);
+  animation: orbit-rotate 18s linear infinite;
+}
+
+.terminal-orbit-red {
+  width: 75px;
+  height: 75px;
+  bottom: -20px;
+  left: -20px;
+  border-color: rgba(51, 255, 0, 0.1);
+  animation: orbit-rotate 15s linear infinite reverse;
+}
+
+/* ANIMATIONS */
+
+@keyframes name-levitate {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 42px 42px;
+  }
+}
+
+@keyframes glow-float {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(25px, -20px, 0) scale(1.15);
+  }
+}
+
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes underline-pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes border-sweep {
+  0% {
+    left: -100%;
+  }
+
+  45%,
+  100% {
+    left: 130%;
+  }
+}
+
+/* RESPONSIVENESS */
+
+@media (max-width: 640px) {
+  .hero-name {
+    font-size: clamp(2.8rem, 11vw, 4.2rem);
+  }
+
+  .name-second {
+    font-size: clamp(3rem, 12vw, 4.5rem);
+    gap: 0.45rem;
+  }
+
+  .hero-orbit-one {
+    right: -180px;
+  }
+
+  .hero-orbit-two {
+    right: -220px;
+  }
+
+  .terminal-floating-label {
+    left: 0.5rem;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-grid,
+  .hero-glow,
+  .hero-orbit,
+  .hero-name,
+  .underline-main,
+  .terminal-border-glow,
+  .terminal-orbit {
+    animation: none !important;
+  }
+
+  .terminal-shell {
+    transition: none;
+  }
+}
+</style>
