@@ -50,12 +50,12 @@ const verificationUrl =
 </script>
 
 <template>
-  <div class="mx-auto max-w-5xl space-y-8">
+  <div class="page-enter mx-auto max-w-5xl space-y-8">
 
     <!-- Header -->
     <section class="rounded-2xl border border-[#33ff00]/20 bg-[#0a100d] p-8 md:p-12">
       <p class="mb-4 font-mono text-xs tracking-[0.3em] text-[#33ff00]">
-       ACHIEVEMENTS
+        ACHIEVEMENTS
       </p>
 
       <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
@@ -152,7 +152,7 @@ const verificationUrl =
             class="mt-5 inline-flex items-center gap-2 font-mono text-xs font-bold tracking-widest text-[#33ff00] transition-colors hover:text-white"
           >
             &gt;&gt; VERIFY BADGE
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true">â†—</span>
           </a>
 
           <div class="mt-6 h-px w-full bg-gradient-to-r from-[#33ff00]/40 to-transparent"></div>

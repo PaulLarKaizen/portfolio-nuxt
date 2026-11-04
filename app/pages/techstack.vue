@@ -240,7 +240,7 @@ const progressOption = {
 </script>
 
 <template>
-  <div class="mx-auto max-w-5xl space-y-8">
+  <div class="page-enter mx-auto max-w-5xl space-y-8">
     <!-- Page introduction -->
     <section
       class="rounded-2xl border border-[#33ff00]/20 bg-[#0a100d] p-8 md:p-12"
@@ -415,7 +415,7 @@ const progressOption = {
         </p>
 
         <h2 class="text-2xl font-black text-white md:text-3xl">
-        KNOWLEDGE
+          KNOWLEDGE
           <span class="text-[#33ff00]">GROWTH.</span>
         </h2>
 
