@@ -113,7 +113,7 @@ onUnmounted(() => {
           </span>
           ACTIVE//
           <span class="h-3 w-px bg-[#33ff00]/30"></span>
-          <span class="text-white/40">SYSTEM READY</span>
+          <span class="text-white/40"></span>
         </div>
 
         <!-- Main heading -->
