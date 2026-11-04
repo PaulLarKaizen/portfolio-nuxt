@@ -25,8 +25,8 @@ useSeoMeta({
 
       <p class="mt-6 max-w-2xl text-base leading-8 text-white/65 md:text-lg">
         My journey in Information Technology is driven by curiosity about
-        how digital systems work, how they can be improved, and how they
-        can be protected.
+        how digital systems work, how they can be improved, how they
+        can be protected and how can they be automated
       </p>
 
       <div class="mt-8 flex items-center gap-3">
@@ -51,7 +51,7 @@ useSeoMeta({
 
         <p class="mt-5 leading-8">
           Developed a foundation in database management,
-          software development, and network configurations.
+          software development, network configurations, and agentic AI systems.
         </p>
       </ContentCard>
 
@@ -60,7 +60,7 @@ useSeoMeta({
         subtitle="EXPLORATION"
       >
         <p class="leading-8">
-          I enjoy solving logical problems and exploring the intricacies of software development and networking.
+          I am passionate about solving logical problems and exploring the intricacies of cybersecurity, networking, and agentic AI.
         </p>
 
         <div class="mt-6 flex flex-wrap gap-2">
@@ -68,10 +68,10 @@ useSeoMeta({
             Problem Solving
           </span>
           <span class="badge badge-outline border-[#33ff00]/40 text-[#33ff00]">
-            Database Management
+            Cybersecurity
           </span>
           <span class="badge badge-outline border-[#33ff00]/40 text-[#33ff00]">
-            Software Development
+            Agentic AI Systems
           </span>
           <span class="badge badge-outline border-[#33ff00]/40 text-[#33ff00]">
             Networking
