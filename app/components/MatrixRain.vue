@@ -3,56 +3,107 @@
 import { onMounted, onUnmounted } from 'vue'
 
 let canvas: HTMLCanvasElement | null = null
-let animationFrame = 0
-let drops: number[] = []
 let context: CanvasRenderingContext2D | null = null
 
-const fontSize = 16
+let animationFrame = 0
+let lastFrameTime = 0
+
+const fontSize = 14
+const columnSpacing = 9
+const frameInterval = 35
+
+let columns = 0
+let drops: number[] = []
+
 const characters = ['0', '1']
 
-function resizeCanvas() {
+function initializeMatrix() {
   if (!canvas || !context) return
 
-  canvas.width = window.innerWidth
-  canvas.height = window.innerHeight
+  const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5)
 
-  const columns = Math.ceil(canvas.width / fontSize)
+  canvas.width = Math.floor(window.innerWidth * pixelRatio)
+  canvas.height = Math.floor(window.innerHeight * pixelRatio)
 
-  drops = Array.from({ length: columns }, () => 
-    Math.floor(Math.random() * -30),
+  canvas.style.width = '100%'
+  canvas.style.height = '100%'
+
+  context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0)
+
+  // More columns create a denser Matrix background.
+  columns = Math.floor(window.innerWidth / columnSpacing) + 2
+
+  drops = []
+
+  for (let i = 0; i < columns; i++) {
+    drops[i] = Math.random() * -100
+  }
+
+  context.clearRect(
+    0,
+    0,
+    window.innerWidth,
+    window.innerHeight,
   )
 }
 
 function drawMatrix() {
   if (!canvas || !context) return
 
-  context.fillStyle = 'rgba(5, 8, 7, 0.08)'
-  context.fillRect(0, 0, canvas.width, canvas.height)
+  // Preserve previous frames to create fading trails.
+  context.fillStyle = 'rgba(5, 8, 7, 0.15)'
+  context.fillRect(
+    0,
+    0,
+    window.innerWidth,
+    window.innerHeight,
+  )
 
-  context.font = `${fontSize}px monospace`
-  context.fillStyle = '#33ff00'
+  // Original glowing green appearance.
+  context.fillStyle = '#00FF41'
+  context.shadowBlur = 12
+  context.shadowColor = '#00FF41'
+  context.font = `900 ${fontSize}px monospace`
 
-  for (let i = 0; i < drops.length; i++) {
+  for (let i = 0; i < columns; i++) {
     const character =
       characters[Math.floor(Math.random() * characters.length)] ?? '0'
 
-    const x = i * fontSize
+    const x = (i - 0.5) * columnSpacing
     const y = (drops[i] ?? 0) * fontSize
 
     context.fillText(character, x, y)
 
-    if (y > canvas.height && Math.random() > 0.975) {
+    if (
+      y > window.innerHeight &&
+      Math.random() > 0.975
+    ) {
       drops[i] = 0
-    } else {
-      drops[i] = (drops[i] ?? 0) + 1
     }
+
+    drops[i] = (drops[i] ?? 0) + 1
   }
 
-  animationFrame = window.requestAnimationFrame(drawMatrix)
+  context.shadowBlur = 0
+}
+
+function animate(timestamp: number) {
+  if (timestamp - lastFrameTime >= frameInterval) {
+    drawMatrix()
+    lastFrameTime = timestamp
+  }
+
+  animationFrame = window.requestAnimationFrame(animate)
+}
+
+function handleResize() {
+  initializeMatrix()
 }
 
 onMounted(() => {
-  canvas = document.querySelector('#matrix-rain')
+  canvas = document.getElementById(
+    'matrix-rain',
+  ) as HTMLCanvasElement | null
 
   if (!canvas) return
 
@@ -60,22 +111,23 @@ onMounted(() => {
 
   if (!context) return
 
-  resizeCanvas()
+  initializeMatrix()
 
   const prefersReducedMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)',
   )
 
   if (!prefersReducedMotion.matches) {
-    drawMatrix()
+    lastFrameTime = 0
+    animationFrame = window.requestAnimationFrame(animate)
   }
 
-  window.addEventListener('resize', resizeCanvas)
+  window.addEventListener('resize', handleResize)
 })
 
 onUnmounted(() => {
   window.cancelAnimationFrame(animationFrame)
-  window.removeEventListener('resize', resizeCanvas)
+  window.removeEventListener('resize', handleResize)
 })
 </script>
 
