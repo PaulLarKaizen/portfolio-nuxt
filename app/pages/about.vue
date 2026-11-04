@@ -7,18 +7,16 @@ useHead({
 useSeoMeta({
   title: 'About | Cyril John Paul Larga',
   description:
-    'Learn about my interests in digital privacy, technology systems, software development, and cybersecurity.',
+    'Learn about my interests in digital privacy, technology systems, software development,and cybersecurity.',
 })
 </script>
 
 <template>
-  <div class="mx-auto max-w-5xl space-y-8">
+  <div class="page-enter mx-auto max-w-5xl space-y-8">
 
     <!-- Page Introduction -->
     <section class="relative overflow-hidden rounded-2xl border border-[#33ff00]/20 bg-[#0a100d] p-8 md:p-12">
       <div class="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#33ff00]/5 blur-3xl"></div>
-
-
 
       <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
         GET TO
