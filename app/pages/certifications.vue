@@ -1,65 +1,69 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Certifications | Cyril John Paul Larga',
-})
+  title: "Certifications | Cyril John Paul Larga",
+});
 
 useSeoMeta({
-  title: 'Certifications | Cyril John Paul Larga',
+  title: "Certifications | Cyril John Paul Larga",
   description:
-    'IT Specialist Java and Databases, Microsoft Office Specialist PowerPoint and Word certifications.',
-})
+    "IT Specialist Java and Databases, Microsoft Office Specialist PowerPoint and Word certifications.",
+});
 
 const certificates = [
   {
-    number: '01',
-    title: 'IT Specialist - Java',
-    issuer: 'Certiport | Pearson VUE',
-    code: 'y9pT - uT6s',
-    category: 'PROGRAMMING',
-    image: '/images/certificates/it-specialist-java.png',
+    number: "01",
+    title: "IT Specialist - Java",
+    issuer: "Certiport | Pearson VUE",
+    code: "y9pT - uT6s",
+    category: "PROGRAMMING",
+    image: "/images/certificates/it-specialist-java.png",
   },
   {
-    number: '02',
-    title: 'IT Specialist - Databases',
-    issuer: 'Certiport | Pearson VUE',
-    code: 'w9yU9 - H94A',
-    category: 'DATABASE MANAGEMENT',
-    image: '/images/certificates/it-specialist-databases.png',
+    number: "02",
+    title: "IT Specialist - Databases",
+    issuer: "Certiport | Pearson VUE",
+    code: "w9yU9 - H94A",
+    category: "DATABASE MANAGEMENT",
+    image: "/images/certificates/it-specialist-databases.png",
   },
   {
-    number: '03',
-    title: 'MOS: PowerPoint',
-    issuer: 'Microsoft 365 Apps',
-    code: 'b96S - s4bS',
-    category: 'PRODUCTIVITY',
-    image: '/images/certificates/mos-powerpoint.png',
+    number: "03",
+    title: "MOS: PowerPoint",
+    issuer: "Microsoft 365 Apps",
+    code: "b96S - s4bS",
+    category: "PRODUCTIVITY",
+    image: "/images/certificates/mos-powerpoint.png",
   },
   {
-    number: '04',
-    title: 'MOS: Word',
-    issuer: 'Microsoft 365 Apps',
-    code: 'mBc2 - DkqW',
-    category: 'PRODUCTIVITY',
-    image: '/images/certificates/mos-word.png',
+    number: "04",
+    title: "MOS: Word",
+    issuer: "Microsoft 365 Apps",
+    code: "mBc2 - DkqW",
+    category: "PRODUCTIVITY",
+    image: "/images/certificates/mos-word.png",
   },
-]
+];
 
 const verificationUrl =
-  'https://www.certiport.com/portal/pages/credentialverification.aspx'
+  "https://www.certiport.com/portal/pages/credentialverification.aspx";
 </script>
 
 <template>
   <div class="page-enter mx-auto max-w-5xl space-y-8">
-
     <!-- Header -->
-    <section class="rounded-2xl border border-[#33ff00]/20 bg-[#0a100d] p-8 md:p-12">
+    <section
+      class="rounded-2xl border border-[#33ff00]/20 bg-[#0a100d] p-8 md:p-12"
+    >
       <p class="mb-4 font-mono text-xs tracking-[0.3em] text-[#33ff00]">
         ACHIEVEMENTS
       </p>
 
       <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
-        <span class="text-[#33ff00]">CREDENTIALS.</span>
+        <ScrambleText
+          text="CREDENTIALS"
+          class="text-[#33ff00]"
+        />
       </h1>
 
       <p class="mt-6 max-w-2xl leading-8 text-white/65">
@@ -82,7 +86,9 @@ const verificationUrl =
         CERTIFICATES
       </p>
 
-      <span class="rounded-full border border-[#33ff00]/30 bg-[#33ff00]/5 px-4 py-2 font-mono text-xs text-[#33ff00]">
+      <span
+        class="rounded-full border border-[#33ff00]/30 bg-[#33ff00]/5 px-4 py-2 font-mono text-xs text-[#33ff00]"
+      >
         {{ certificates.length }} RECORDS
       </span>
     </div>
@@ -108,7 +114,10 @@ const verificationUrl =
             class="aspect-[4/3] w-full rounded-lg object-contain transition-transform duration-500 group-hover:scale-[1.02]"
             loading="lazy"
           />
-          <p class="mt-2 text-center font-mono text-[10px] tracking-widest text-[#33ff00]/50">
+
+          <p
+            class="mt-2 text-center font-mono text-[10px] tracking-widest text-[#33ff00]/50"
+          >
             CLICK IMAGE TO VIEW FULL CERTIFICATE
           </p>
         </a>
@@ -119,12 +128,16 @@ const verificationUrl =
             <span class="font-mono text-xs tracking-widest text-[#33ff00]/60">
             </span>
 
-            <span class="rounded-md border border-[#33ff00]/20 px-2 py-1 font-mono text-[9px] tracking-wider text-[#33ff00]/80">
+            <span
+              class="rounded-md border border-[#33ff00]/20 px-2 py-1 font-mono text-[9px] tracking-wider text-[#33ff00]/80"
+            >
               {{ certificate.category }}
             </span>
           </div>
 
-          <h2 class="text-3xl font-black leading-snug text-white transition-colors duration-300 group-hover:text-[#33ff00]">
+          <h2
+            class="text-3xl font-black leading-snug text-white transition-colors duration-300 group-hover:text-[#33ff00]"
+          >
             {{ certificate.title }}
           </h2>
 
@@ -134,7 +147,9 @@ const verificationUrl =
 
           <!-- Verification Code -->
           <div class="mt-6 rounded-xl border border-[#33ff00]/20 bg-black/30 p-4">
-            <p class="mb-2 font-mono text-[10px] tracking-[0.2em] text-[#33ff00]/60">
+            <p
+              class="mb-2 font-mono text-[10px] tracking-[0.2em] text-[#33ff00]/60"
+            >
               CREDENTIAL VERIFICATION CODE
             </p>
 
@@ -151,10 +166,12 @@ const verificationUrl =
             class="mt-5 inline-flex items-center gap-2 font-mono text-xs font-bold tracking-widest text-[#33ff00] transition-colors hover:text-white"
           >
             &gt;&gt; VERIFY BADGE
-            <span aria-hidden="true">â†—</span>
+            <span aria-hidden="true">↗</span>
           </a>
 
-          <div class="mt-6 h-px w-full bg-gradient-to-r from-[#33ff00]/40 to-transparent"></div>
+          <div
+            class="mt-6 h-px w-full bg-gradient-to-r from-[#33ff00]/40 to-transparent"
+          ></div>
         </div>
       </article>
     </div>

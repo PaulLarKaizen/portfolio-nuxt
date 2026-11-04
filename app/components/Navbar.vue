@@ -50,7 +50,7 @@ function closeMenu() {
             <span
               class="font-mono text-lg font-black leading-none tracking-[0.16em] text-[#33ff00] drop-shadow-[0_0_8px_rgba(51,255,0,0.45)] transition-all duration-300 group-hover:drop-shadow-[0_0_14px_rgba(51,255,0,0.85)] sm:text-xl"
             >
-              CJPL<span class="text-rose-500">.</span>
+              CJPL<span class="text-rose-500"></span>
             </span>
 
             <span

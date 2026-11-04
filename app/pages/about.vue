@@ -1,26 +1,32 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'About | Cyril John Paul Larga',
-})
+  title: "About | Cyril John Paul Larga",
+});
 
 useSeoMeta({
-  title: 'About | Cyril John Paul Larga',
+  title: "About | Cyril John Paul Larga",
   description:
-    'Learn about my interests in digital privacy, technology systems, software development,and cybersecurity.',
-})
+    "Learn about my interests in digital privacy, technology systems, software development, and cybersecurity.",
+});
 </script>
 
 <template>
   <div class="page-enter mx-auto max-w-5xl space-y-8">
-
     <!-- Page Introduction -->
-    <section class="relative overflow-hidden rounded-2xl border border-[#33ff00]/20 bg-[#0a100d] p-8 md:p-12">
-      <div class="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#33ff00]/5 blur-3xl"></div>
+    <section
+      class="relative overflow-hidden rounded-2xl border border-[#33ff00]/20 bg-[#0a100d] p-8 md:p-12"
+    >
+      <div
+        class="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#33ff00]/5 blur-3xl"
+      ></div>
 
       <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
-        GET TO
-        <span class="text-[#33ff00]">KNOW ME.</span>
+        <ScrambleText text="GET TO" />
+        <ScrambleText
+          text="KNOW ME."
+          class="text-[#33ff00]"
+        />
       </h1>
 
       <p class="mt-6 max-w-2xl text-base leading-8 text-white/65 md:text-lg">
@@ -39,14 +45,12 @@ useSeoMeta({
 
     <!-- Background and Interests -->
     <div class="grid gap-6 md:grid-cols-2">
-
-      <ContentCard
-        subtitle="FOUNDATION"
-        title="BACKGROUND"
-      >
+      <ContentCard subtitle="FOUNDATION" title="BACKGROUND">
         <p class="leading-8">
           I am an IT student with an interest in
-          <span class="font-semibold text-[#33ff00]">digital security and privacy</span>
+          <span class="font-semibold text-[#33ff00]">
+            digital security and privacy
+          </span>
         </p>
 
         <p class="mt-5 leading-8">
@@ -55,12 +59,10 @@ useSeoMeta({
         </p>
       </ContentCard>
 
-      <ContentCard
-        title="INTERESTS"
-        subtitle="EXPLORATION"
-      >
+      <ContentCard title="INTERESTS" subtitle="EXPLORATION">
         <p class="leading-8">
-          I am passionate about solving logical problems and exploring the intricacies of cybersecurity, networking, and agentic AI.
+          I am passionate about solving logical problems and exploring the
+          intricacies of cybersecurity, networking, and agentic AI.
         </p>
 
         <div class="mt-6 flex flex-wrap gap-2">
@@ -78,12 +80,15 @@ useSeoMeta({
           </span>
         </div>
       </ContentCard>
-
     </div>
 
     <!-- Career Direction -->
-    <section class="relative overflow-hidden rounded-2xl border border-[#33ff00]/30 bg-[#0a100d] p-8 md:p-10">
-      <div class="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-[#33ff00]/5 to-transparent"></div>
+    <section
+      class="relative overflow-hidden rounded-2xl border border-[#33ff00]/30 bg-[#0a100d] p-8 md:p-10"
+    >
+      <div
+        class="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-[#33ff00]/5 to-transparent"
+      ></div>
 
       <div class="relative">
         <p class="mb-3 font-mono text-xs tracking-[0.25em] text-[#33ff00]">
@@ -123,6 +128,5 @@ useSeoMeta({
         </div>
       </div>
     </section>
-
   </div>
 </template>

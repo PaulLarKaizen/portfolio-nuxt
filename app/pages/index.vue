@@ -110,12 +110,11 @@ onUnmounted(() => {
           <h1
             class="w-full text-4xl font-black leading-[1.2] tracking-tight text-white sm:text-5xl lg:text-[3.4rem] xl:text-6xl"
           >
-            Cyril John
-            <span
+            <ScrambleText text="Cyril John" />
+            <ScrambleText
+              text="Paul Larga."
               class="block whitespace-nowrap bg-gradient-to-r from-[#33ff00] via-[#8cff72] to-rose-500 bg-clip-text pb-2 text-transparent"
-            >
-              Paul Larga.
-            </span>
+            />
           </h1>
 
           <div class="flex flex-wrap items-center gap-3 pt-2">
