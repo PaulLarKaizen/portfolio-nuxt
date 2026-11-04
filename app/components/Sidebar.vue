@@ -13,6 +13,8 @@
             alt="Profile photo"
             class="profile-photo"
           />
+
+          <div class="profile-scan"></div>
         </div>
 
         <span class="profile-status"></span>
@@ -79,8 +81,13 @@
 </template>
 
 <style scoped>
+/* ========================================
+   PROFILE PHOTO - CYBER HUD EFFECT
+======================================== */
+
 .profile-frame {
   position: relative;
+  isolation: isolate;
   width: 140px;
   height: 140px;
   padding: 5px;
@@ -89,9 +96,43 @@
   box-shadow:
     0 0 18px rgba(51, 255, 0, 0.2),
     0 0 35px rgba(51, 255, 0, 0.08);
+  transition: box-shadow 0.35s ease;
+}
+
+/* Rotating outer neon ring */
+.profile-frame::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 1px solid transparent;
+  border-top-color: #33ff00;
+  border-right-color: rgba(51, 255, 0, 0.45);
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: profile-rotate 7s linear infinite;
+}
+
+/* Pulsating outer glow */
+.profile-frame::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 9999px;
+  background: rgba(51, 255, 0, 0.08);
+  filter: blur(15px);
+  z-index: -1;
+  pointer-events: none;
+  animation: profile-glow 3s ease-in-out infinite;
+}
+
+.profile-frame:hover {
+  box-shadow:
+    0 0 22px rgba(51, 255, 0, 0.35),
+    0 0 45px rgba(51, 255, 0, 0.18);
 }
 
 .profile-inner {
+  position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -104,8 +145,34 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: transform 0.6s ease;
 }
 
+/* Slight photo zoom on hover */
+.profile-frame:hover .profile-photo {
+  transform: scale(1.1);
+}
+
+/* Moving scanner light */
+.profile-scan {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 45%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(51, 255, 0, 0.04),
+    rgba(51, 255, 0, 0.3),
+    rgba(51, 255, 0, 0.04),
+    transparent
+  );
+  animation: profile-scan 4s ease-in-out infinite;
+}
+
+/* Online indicator */
 .profile-status {
   position: absolute;
   right: 7px;
@@ -116,7 +183,48 @@
   border-radius: 9999px;
   background: #33ff00;
   box-shadow: 0 0 10px rgba(51, 255, 0, 0.8);
+  z-index: 2;
 }
+
+/* ========================================
+   PROFILE ANIMATIONS
+======================================== */
+
+@keyframes profile-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes profile-glow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes profile-scan {
+  0% {
+    top: -100%;
+  }
+
+  100% {
+    top: 150%;
+  }
+}
+
+/* ========================================
+   SIDEBAR ELEMENTS
+======================================== */
 
 .section-line {
   width: 100%;
@@ -151,9 +259,26 @@
 }
 
 .social-link:hover {
-  border-color: rgba(51, 255, 0, 0.65);
+  border-color: rgba(255, 0, 60, 0.65);
   background: rgba(51, 255, 0, 0.1);
   color: white;
   box-shadow: 0 0 12px rgba(51, 255, 0, 0.08);
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-frame::before,
+  .profile-frame::after,
+  .profile-scan {
+    animation: none !important;
+  }
+
+  .profile-photo,
+  .profile-frame {
+    transition: none !important;
+  }
 }
 </style>
