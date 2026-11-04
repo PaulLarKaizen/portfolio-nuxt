@@ -157,6 +157,227 @@
 }
 
 /* ========================================
+   SYSTEM PROFILE TERMINAL ANIMATIONS
+======================================== */
+
+/* Green and red terminal breathing glow */
+@keyframes terminalGlow {
+  0%, 100% {
+    border-color: rgba(51, 255, 0, 0.35);
+    box-shadow:
+      0 0 12px rgba(51, 255, 0, 0.12),
+      0 0 30px rgba(51, 255, 0, 0.07),
+      0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  50% {
+    border-color: rgba(255, 0, 60, 0.55);
+    box-shadow:
+      0 0 14px rgba(255, 0, 60, 0.18),
+      0 0 36px rgba(255, 0, 60, 0.1),
+      0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Moving scan beam */
+@keyframes terminalScan {
+  0% {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.65;
+  }
+
+  85% {
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+}
+
+/* Moving green/red reflection */
+@keyframes terminalSweep {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.12;
+  }
+
+  100% {
+    transform: translateX(220%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+/* Blinking terminal cursor */
+@keyframes terminalCursor {
+  0%, 49% {
+    opacity: 1;
+  }
+
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Header indicator lights */
+@keyframes terminalLight {
+  0%, 100% {
+    opacity: 0.65;
+    filter: brightness(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    filter: brightness(1.5);
+  }
+}
+
+/* Interest bar reveal */
+@keyframes terminalProgress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ONLINE indicator pulse */
+@keyframes terminalOnline {
+  0%, 100% {
+    opacity: 0.7;
+    text-shadow: 0 0 3px rgba(51, 255, 0, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+    text-shadow:
+      0 0 6px rgba(51, 255, 0, 0.9),
+      0 0 14px rgba(51, 255, 0, 0.5);
+  }
+}
+
+/* Terminal panel */
+.neon-panel.terminal-shell {
+  isolation: isolate;
+  animation: terminalGlow 4s ease-in-out infinite;
+}
+
+/* Reflection layer */
+.terminal-shell::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: -35%;
+  width: 35%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(51, 255, 0, 0.07),
+    rgba(255, 0, 60, 0.06),
+    transparent
+  );
+  animation: terminalSweep 7s ease-in-out infinite;
+}
+
+/* Scanning beam */
+.terminal-scan {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(51, 255, 0, 0.035),
+    rgba(51, 255, 0, 0.13),
+    rgba(255, 0, 60, 0.045),
+    transparent
+  );
+  animation: terminalScan 5s linear infinite;
+}
+
+/* Keep terminal content above reflection */
+.terminal-content {
+  z-index: 2;
+}
+
+/* Typing cursor */
+.terminal-cursor {
+  display: inline-block;
+  width: 6px;
+  height: 13px;
+  vertical-align: middle;
+  background: #33ff00;
+  box-shadow: 0 0 8px rgba(51, 255, 0, 0.8);
+  animation: terminalCursor 0.85s steps(2, start) infinite;
+}
+
+/* Header lights */
+.terminal-light {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+}
+
+.terminal-light-red {
+  background: #f43f5e;
+  box-shadow: 0 0 9px rgba(244, 63, 94, 0.7);
+  animation: terminalLight 1.8s ease-in-out infinite;
+}
+
+.terminal-light-yellow {
+  background: #facc15;
+  box-shadow: 0 0 9px rgba(250, 204, 21, 0.55);
+  animation: terminalLight 2.2s ease-in-out infinite 0.3s;
+}
+
+.terminal-light-green {
+  background: #33ff00;
+  box-shadow: 0 0 10px rgba(51, 255, 0, 0.8);
+  animation: terminalLight 1.5s ease-in-out infinite 0.6s;
+}
+
+/* Progress bars */
+.terminal-progress-fill {
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: terminalProgress 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards;
+}
+
+.terminal-progress-red {
+  animation-delay: 0.65s;
+}
+
+/* Online status */
+.terminal-online {
+  color: #33ff00;
+  animation: terminalOnline 1.8s ease-in-out infinite;
+}
+
+/* ========================================
    ACCESSIBILITY
 ======================================== */
 
