@@ -1,7 +1,7 @@
 
 <template>
   <aside
-    class="hidden min-h-screen w-64 shrink-0 border-r border-[#33ff00]/20 bg-[#080d0b]/90 px-6 py-10 shadow-[10px_0_30px_rgba(0,0,0,0.25)] lg:block"
+    class="hidden w-64 shrink-0 self-stretch border-r border-[#33ff00]/20 bg-[#080d0b]/90 px-6 py-10 shadow-[10px_0_30px_rgba(0,0,0,0.25)] lg:block"
   >
     <div class="sticky top-28 flex flex-col items-center text-center">
       <!-- Profile image -->
