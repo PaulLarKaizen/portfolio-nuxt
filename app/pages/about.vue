@@ -22,9 +22,9 @@ useSeoMeta({
       ></div>
 
       <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
-        <ScrambleText text="GET TO" />
+        <ScrambleText text="GET TO " />
         <ScrambleText
-          text="KNOW ME."
+          text=" KNOW ME"
           class="text-[#33ff00]"
         />
       </h1>

@@ -308,7 +308,7 @@ const progressOption = {
       <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
         <ScrambleText text="MY TECH" />
         <ScrambleText
-          text="STACK."
+          text="STACK"
           class="text-[#33ff00]"
         />
       </h1>

@@ -112,7 +112,7 @@ onUnmounted(() => {
           >
             <ScrambleText text="Cyril John" />
             <ScrambleText
-              text="Paul Larga."
+              text="Paul Larga"
               class="block whitespace-nowrap bg-gradient-to-r from-[#33ff00] via-[#8cff72] to-rose-500 bg-clip-text pb-2 text-transparent"
             />
           </h1>
