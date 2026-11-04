@@ -59,7 +59,6 @@ const verificationUrl =
       </p>
 
       <h1 class="text-4xl font-black tracking-tight text-white md:text-6xl">
-        C:SKILLS&gt;
         <span class="text-[#33ff00]">CREDENTIALS.</span>
       </h1>
 
