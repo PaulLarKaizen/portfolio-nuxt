@@ -12,7 +12,6 @@ useSeoMeta({
     "An IT student exploring software development, cybersecurity, system defense, and resilient digital architectures.",
 });
 
-// SYSTEM_PROFILE.exe message cycle
 const terminalMessages = [
   "initializing_profile...",
   "loading_technology_interests...",
@@ -37,7 +36,6 @@ function typeTerminalMessage() {
         0,
         typedMessage.value.length + 1,
       );
-
       typingTimer = setTimeout(typeTerminalMessage, 42);
     } else {
       isDeleting.value = true;
@@ -51,7 +49,6 @@ function typeTerminalMessage() {
       isDeleting.value = false;
       messageIndex.value =
         (messageIndex.value + 1) % terminalMessages.length;
-
       typingTimer = setTimeout(typeTerminalMessage, 350);
     }
   }
@@ -79,17 +76,14 @@ onUnmounted(() => {
 
 <template>
   <div
-    class="hero-page page-enter relative isolate mx-auto flex max-w-6xl items-center lg:min-h-[calc(100svh-14rem)]"
+    class="hero-page relative isolate mx-auto flex max-w-6xl items-center lg:min-h-[calc(100svh-14rem)]"
   >
-    <!-- Background atmosphere -->
     <div
       class="hero-atmosphere pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
       <div class="hero-grid absolute inset-0"></div>
-
       <div class="hero-glow hero-glow-green"></div>
       <div class="hero-glow hero-glow-red"></div>
-
       <div class="hero-orbit hero-orbit-one"></div>
       <div class="hero-orbit hero-orbit-two"></div>
     </div>
@@ -97,9 +91,7 @@ onUnmounted(() => {
     <section
       class="relative grid w-full min-w-0 items-center gap-12 py-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:py-0"
     >
-      <!-- LEFT: HERO INTRODUCTION -->
       <div class="hero-intro relative min-w-0 space-y-6">
-        <!-- Status -->
         <div
           class="hero-status inline-flex items-center gap-3 rounded-full border border-[#33ff00]/25 bg-[#33ff00]/5 px-4 py-2 font-mono text-xs tracking-[0.18em] text-[#33ff00]"
         >
@@ -116,13 +108,11 @@ onUnmounted(() => {
           <span class="text-white/40"></span>
         </div>
 
-        <!-- Main heading -->
         <div class="min-w-0 space-y-4">
           <div class="flex items-center gap-3">
             <span
               class="h-[2px] w-8 rounded-full bg-[#33ff00] shadow-[0_0_10px_rgba(51,255,0,0.8)]"
             ></span>
-
             <span
               class="font-mono text-[10px] tracking-[0.25em] text-[#33ff00]/60"
             >
@@ -130,7 +120,6 @@ onUnmounted(() => {
             </span>
           </div>
 
-          <!-- Name -->
           <div class="hero-name-wrap relative">
             <h1
               aria-label="Cyril John Paul Larga"
@@ -143,17 +132,11 @@ onUnmounted(() => {
               <span
                 class="name-second mt-2 flex flex-wrap items-baseline gap-x-3"
               >
-                <span>
-                  <ScrambleText text="Paul" />
-                </span>
-
-                <span>
-                  <ScrambleText text="Larga" />
-                </span>
+                <span><ScrambleText text="Paul" /></span>
+                <span><ScrambleText text="Larga" /></span>
               </span>
             </h1>
 
-            <!-- Name underline -->
             <div
               class="name-underline mt-6 flex h-[3px] w-full max-w-[21rem] overflow-hidden rounded-full"
             >
@@ -167,16 +150,13 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <!-- Motto -->
           <div class="flex flex-wrap items-center gap-3 pt-1">
             <p
               class="font-mono text-xs font-semibold tracking-[0.2em] text-[#33ff00] sm:text-sm"
             >
               LEARN. BUILD. AND EVOLVE.
             </p>
-
             <span class="h-1 w-1 rounded-full bg-white/30"></span>
-
             <span
               class="font-mono text-[10px] tracking-widest text-white/35"
             >
@@ -185,7 +165,6 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <!-- Description -->
         <p class="max-w-xl text-sm leading-7 text-white/65 sm:text-base">
           Exploring the world of
           <span class="font-semibold text-white">software development</span>,
@@ -195,7 +174,6 @@ onUnmounted(() => {
           and learning how to build more reliable digital systems.
         </p>
 
-        <!-- Actions -->
         <div class="flex flex-wrap gap-3 pt-1">
           <NuxtLink
             to="/techstack"
@@ -218,7 +196,6 @@ onUnmounted(() => {
           </NuxtLink>
         </div>
 
-        <!-- Decorative system footer -->
         <div
           class="flex items-center gap-3 pt-3 font-mono text-[9px] tracking-[0.2em] text-white/25"
         >
@@ -229,7 +206,6 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- RIGHT: SYSTEM TERMINAL -->
       <div class="terminal-stage relative mx-auto w-full max-w-md">
         <div
           class="absolute -inset-8 rounded-full bg-[#33ff00]/5 blur-3xl"
@@ -244,7 +220,6 @@ onUnmounted(() => {
           <div class="terminal-scan" aria-hidden="true"></div>
           <div class="terminal-border-glow" aria-hidden="true"></div>
 
-          <!-- Terminal header -->
           <div
             class="terminal-content relative flex items-center justify-between border-b border-white/10 pb-3"
           >
@@ -263,7 +238,6 @@ onUnmounted(() => {
             </span>
           </div>
 
-          <!-- Terminal content -->
           <div
             class="terminal-content relative space-y-4 py-4 font-mono text-xs sm:text-sm"
           >
@@ -298,7 +272,6 @@ onUnmounted(() => {
               <p class="text-white">};</p>
             </div>
 
-            <!-- Interests -->
             <div class="border-t border-white/10 pt-4">
               <p class="mb-3 text-[#33ff00]/70">// CURRENT INTERESTS</p>
 
@@ -348,7 +321,6 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <!-- Terminal footer -->
           <div
             class="terminal-content relative flex items-center justify-between border-t border-white/10 pt-3 text-[10px] tracking-widest text-white/40"
           >
@@ -357,7 +329,6 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <!-- Floating decorative label -->
         <div
           class="terminal-floating-label absolute -bottom-4 -left-3 rounded-lg border border-[#33ff00]/30 bg-[#080d0b] px-3 py-2 font-mono text-[10px] text-[#33ff00] shadow-[0_0_20px_rgba(51,255,0,0.12)] sm:-left-6"
         >
@@ -365,7 +336,6 @@ onUnmounted(() => {
           SYSTEMS THINKER
         </div>
 
-        <!-- Corner status -->
         <div
           class="absolute -right-2 -top-4 font-mono text-[9px] tracking-widest text-[#33ff00]/50 sm:-right-5"
         >
@@ -682,6 +652,14 @@ onUnmounted(() => {
 
   .terminal-shell {
     transition: none;
+  }
+}
+
+/* TEMPORARY MOBILE ORBIT TEST */
+@media (max-width: 767px) {
+  .terminal-orbit-green,
+  .terminal-orbit-red {
+    animation: none !important;
   }
 }
 </style>
