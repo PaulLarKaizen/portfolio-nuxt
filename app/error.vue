@@ -1,6 +1,6 @@
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted, onUnmounted } from "vue";
 import type { NuxtError } from "#app";
 
 const props = defineProps<{
@@ -42,20 +42,204 @@ const errorDescription = computed(() => {
 });
 
 const attemptedPath = computed(() => route.fullPath || "/unknown");
+
+// ========================================
+// RED MATRIX BACKGROUND
+// ========================================
+
+let canvas: HTMLCanvasElement | null = null;
+let context: CanvasRenderingContext2D | null = null;
+
+let animationFrame: number | null = null;
+let lastFrameTime = 0;
+let motionPreference: MediaQueryList | null = null;
+
+const fontSize = 14;
+const columnSpacing = 12;
+const frameInterval = 35;
+
+let canvasWidth = 0;
+let canvasHeight = 0;
+let columns = 0;
+let drops: number[] = [];
+
+const characters = ["0", "1"];
+
+function initializeMatrix() {
+  if (!canvas || !context) return;
+
+  const width = document.documentElement.clientWidth;
+  const height = window.innerHeight;
+
+  if (width <= 0 || height <= 0) return;
+
+  if (width === canvasWidth && height === canvasHeight) return;
+
+  canvasWidth = width;
+  canvasHeight = height;
+
+  const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+
+  canvas.width = Math.floor(width * pixelRatio);
+  canvas.height = Math.floor(height * pixelRatio);
+
+  canvas.style.width = `${width}px`;
+  canvas.style.height = `${height}px`;
+
+  context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+  const previousDrops = drops;
+
+  columns = Math.floor(width / columnSpacing) + 2;
+  drops = [];
+
+  for (let i = 0; i < columns; i++) {
+    drops[i] = previousDrops[i] ?? Math.random() * -100;
+  }
+
+  clearMatrix();
+}
+
+function clearMatrix() {
+  if (!context) return;
+
+  context.clearRect(0, 0, canvasWidth, canvasHeight);
+}
+
+function drawMatrix() {
+  if (!canvas || !context) return;
+
+  // Transparent trails preserve the dark background
+  context.fillStyle = "rgba(5, 3, 5, 0.15)";
+  context.fillRect(0, 0, canvasWidth, canvasHeight);
+
+  // Red Matrix characters
+  context.fillStyle = "#ff1744";
+  context.shadowBlur = 12;
+  context.shadowColor = "#ff003c";
+  context.font = `900 ${fontSize}px monospace`;
+
+  for (let i = 0; i < columns; i++) {
+    const character =
+      characters[Math.floor(Math.random() * characters.length)] ?? "0";
+
+    const x = (i - 0.5) * columnSpacing;
+    const y = (drops[i] ?? 0) * fontSize;
+
+    context.fillText(character, x, y);
+
+    if (y > canvasHeight && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+
+    drops[i] = (drops[i] ?? 0) + 1;
+  }
+
+  context.shadowBlur = 0;
+}
+
+function stopMatrix() {
+  if (animationFrame !== null) {
+    window.cancelAnimationFrame(animationFrame);
+    animationFrame = null;
+  }
+
+  clearMatrix();
+}
+
+function animate(timestamp: number) {
+  if (motionPreference?.matches) {
+    stopMatrix();
+    return;
+  }
+
+  if (timestamp - lastFrameTime >= frameInterval) {
+    drawMatrix();
+    lastFrameTime = timestamp;
+  }
+
+  animationFrame = window.requestAnimationFrame(animate);
+}
+
+function startMatrix() {
+  if (!canvas || !context || motionPreference?.matches) return;
+  if (animationFrame !== null) return;
+
+  lastFrameTime = 0;
+  animationFrame = window.requestAnimationFrame(animate);
+}
+
+function handleMotionChange(event: MediaQueryListEvent) {
+  if (event.matches) {
+    stopMatrix();
+  } else {
+    initializeMatrix();
+    startMatrix();
+  }
+}
+
+function handleResize() {
+  if (!canvas || !context) return;
+
+  const width = document.documentElement.clientWidth;
+  const height = window.innerHeight;
+
+  if (width === canvasWidth && height === canvasHeight) return;
+
+  initializeMatrix();
+}
+
+onMounted(() => {
+  canvas = document.getElementById("error-matrix") as HTMLCanvasElement | null;
+
+  if (!canvas) return;
+
+  context = canvas.getContext("2d");
+
+  if (!context) return;
+
+  motionPreference = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  );
+
+  motionPreference.addEventListener("change", handleMotionChange);
+  window.addEventListener("resize", handleResize, { passive: true });
+
+  initializeMatrix();
+
+  if (!motionPreference.matches) {
+    startMatrix();
+  }
+});
+
+onUnmounted(() => {
+  stopMatrix();
+
+  window.removeEventListener("resize", handleResize);
+
+  motionPreference?.removeEventListener("change", handleMotionChange);
+});
 </script>
 
 <template>
   <main
     class="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#050907] px-5 py-24 text-white"
   >
+    <!-- RED MATRIX BACKGROUND -->
+    <canvas
+      id="error-matrix"
+      class="pointer-events-none fixed inset-0 z-0"
+      aria-hidden="true"
+    ></canvas>
+
     <!-- Background effects -->
     <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(51,255,0,0.09),transparent_65%)]"
-    />
+      class="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,rgba(255,0,60,0.07),transparent_65%)]"
+    ></div>
 
     <div
-      class="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(51,255,0,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(51,255,0,0.35)_1px,transparent_1px)] [background-size:45px_45px]"
-    />
+      class="pointer-events-none absolute inset-0 z-[1] opacity-[0.07] [background-image:linear-gradient(rgba(255,0,60,0.25)_1px,transparent_1px),linear-gradient(90deg,rgba(255,0,60,0.25)_1px,transparent_1px)] [background-size:45px_45px]"
+    ></div>
 
     <!-- Main error panel -->
     <section class="relative z-10 w-full max-w-3xl">
@@ -67,12 +251,18 @@ const attemptedPath = computed(() => route.fullPath || "/unknown");
           class="flex items-center justify-between border-b border-[#33ff00]/20 bg-[#0b130d] px-5 py-4 sm:px-7"
         >
           <div class="flex items-center gap-2">
-            <span class="h-2.5 w-2.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
-            <span class="h-2.5 w-2.5 rounded-full bg-yellow-400" />
-            <span class="h-2.5 w-2.5 rounded-full bg-[#33ff00] shadow-[0_0_8px_rgba(51,255,0,0.8)]" />
+            <span
+              class="h-2.5 w-2.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"
+            ></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+            <span
+              class="h-2.5 w-2.5 rounded-full bg-[#33ff00] shadow-[0_0_8px_rgba(51,255,0,0.8)]"
+            ></span>
           </div>
 
-          <p class="font-mono text-[0.6rem] tracking-[0.2em] text-[#33ff00]/60 sm:text-xs">
+          <p
+            class="font-mono text-[0.6rem] tracking-[0.2em] text-[#33ff00]/60 sm:text-xs"
+          >
             SYSTEM_EXCEPTION.exe
           </p>
 
@@ -86,8 +276,10 @@ const attemptedPath = computed(() => route.fullPath || "/unknown");
           <div
             class="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2"
           >
-            <span class="h-2 w-2 animate-pulse rounded-full bg-red-500" />
-            <span class="font-mono text-[0.65rem] font-bold tracking-[0.2em] text-red-400">
+            <span class="h-2 w-2 animate-pulse rounded-full bg-red-500"></span>
+            <span
+              class="font-mono text-[0.65rem] font-bold tracking-[0.2em] text-red-400"
+            >
               SYSTEM ERROR DETECTED
             </span>
           </div>
@@ -101,13 +293,17 @@ const attemptedPath = computed(() => route.fullPath || "/unknown");
 
           <div
             class="mx-auto my-7 h-px w-24 bg-gradient-to-r from-transparent via-[#33ff00] to-transparent"
-          />
+          ></div>
 
-          <h2 class="font-mono text-lg font-bold tracking-[0.12em] text-white sm:text-2xl">
+          <h2
+            class="font-mono text-lg font-bold tracking-[0.12em] text-white sm:text-2xl"
+          >
             {{ errorTitle }}
           </h2>
 
-          <p class="mx-auto mt-4 max-w-lg text-sm leading-7 text-gray-400 sm:text-base">
+          <p
+            class="mx-auto mt-4 max-w-lg text-sm leading-7 text-gray-400 sm:text-base"
+          >
             {{ errorDescription }}
           </p>
 
@@ -115,7 +311,9 @@ const attemptedPath = computed(() => route.fullPath || "/unknown");
           <div
             class="mx-auto mt-9 max-w-xl rounded-xl border border-[#33ff00]/15 bg-black/40 p-5 text-left"
           >
-            <p class="mb-4 font-mono text-xs font-bold tracking-widest text-[#33ff00]">
+            <p
+              class="mb-4 font-mono text-xs font-bold tracking-widest text-[#33ff00]"
+            >
               // SYSTEM DIAGNOSTICS
             </p>
 
@@ -140,13 +338,17 @@ const attemptedPath = computed(() => route.fullPath || "/unknown");
           </div>
 
           <!-- Return home -->
-          <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div
+            class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          >
             <button
               type="button"
               class="group flex w-full items-center justify-center gap-3 rounded-xl border border-[#33ff00]/60 bg-[#33ff00]/10 px-7 py-4 font-mono text-xs font-black tracking-widest text-[#33ff00] shadow-[0_0_15px_rgba(51,255,0,0.12)] transition-all duration-300 hover:border-[#33ff00] hover:bg-[#33ff00] hover:text-black hover:shadow-[0_0_25px_rgba(51,255,0,0.35)] sm:w-auto"
               @click="clearError({ redirect: '/' })"
             >
-              <span class="transition-transform duration-300 group-hover:-translate-x-1">
+              <span
+                class="transition-transform duration-300 group-hover:-translate-x-1"
+              >
                 &lt;
               </span>
               RETURN TO BASE
@@ -162,13 +364,17 @@ const attemptedPath = computed(() => route.fullPath || "/unknown");
             CYRIL JOHN PAUL LARGA // PORTFOLIO
           </p>
 
-          <p class="font-mono text-[0.6rem] tracking-wider text-[#33ff00]/50">
-            CONNECTION TERMINATED _
+          <p
+            class="font-mono text-[0.6rem] tracking-wider text-[#33ff00]/50"
+          >
+            CONNECTION TERMINATED \_
           </p>
         </div>
       </div>
 
-      <p class="mt-6 text-center font-mono text-[0.6rem] tracking-[0.2em] text-gray-600">
+      <p
+        class="mt-6 text-center font-mono text-[0.6rem] tracking-[0.2em] text-gray-600"
+      >
         END OF TRANSMISSION
       </p>
     </section>
