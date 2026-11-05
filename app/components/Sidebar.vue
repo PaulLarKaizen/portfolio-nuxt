@@ -2,10 +2,15 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 
-const isSidebarOpen = ref(false);
+const isSidebarOpen = useState<boolean>("profile-sidebar-open", () => false);
+const isNavbarOpen = useState<boolean>("mobile-navbar-open", () => false);
+
 const previousBodyOverflow = ref("");
 
 function openSidebar() {
+  // Close the Navbar before opening the Sidebar.
+  isNavbarOpen.value = false;
+
   previousBodyOverflow.value = document.body.style.overflow;
   document.body.style.overflow = "hidden";
   isSidebarOpen.value = true;
@@ -25,8 +30,12 @@ function toggleSidebar() {
 }
 
 function handleKeydown(event: KeyboardEvent) {
-  if (event.key === "Escape" && isSidebarOpen.value) {
-    closeSidebar();
+  if (event.key === "Escape") {
+    if (isSidebarOpen.value) {
+      closeSidebar();
+    } else if (isNavbarOpen.value) {
+      isNavbarOpen.value = false;
+    }
   }
 }
 
@@ -50,7 +59,9 @@ onUnmounted(() => {
       aria-controls="profile-sidebar"
       :aria-label="isSidebarOpen ? 'Close sidebar' : 'Open sidebar'"
       class="cyber-menu-button"
-      :class="{ 'menu-active': isSidebarOpen }"
+      :class="{
+  'menu-active': isSidebarOpen,
+}"
     >
       <span class="menu-icon-frame">
         <span class="menu-icon-lines">
@@ -283,7 +294,7 @@ onUnmounted(() => {
   position: fixed;
   top: 7rem;
   left: 1.25rem;
-  z-index: 80;
+  z-index: 40;
 
   display: flex;
   align-items: center;
@@ -308,10 +319,16 @@ onUnmounted(() => {
     inset 0 0 15px rgba(51, 255, 0, 0.025);
 
   transition:
+    top 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.35s ease,
     box-shadow 0.35s ease,
     background 0.35s ease;
+}
+
+/* Move the Sidebar hamburger below the expanded Navbar. */
+.cyber-menu-button.navbar-expanded {
+  top: 22rem;
 }
 
 .cyber-menu-button::before,
@@ -371,6 +388,8 @@ onUnmounted(() => {
 ======================================== */
 
 .cyber-menu-button.menu-active {
+  z-index: 110;
+
   transform:
     translateX(calc(min(85vw, 18rem) - 94px))
     translateY(-88px);

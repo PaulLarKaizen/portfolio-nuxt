@@ -78,6 +78,7 @@ onUnmounted(() => {
   <div
     class="hero-page relative isolate mx-auto flex max-w-6xl items-center lg:min-h-[calc(100svh-14rem)]"
   >
+    <!-- BACKGROUND ATMOSPHERE -->
     <div
       class="hero-atmosphere pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
@@ -91,7 +92,10 @@ onUnmounted(() => {
     <section
       class="relative grid w-full min-w-0 items-center gap-12 py-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:py-0"
     >
+      <!-- LEFT: INTRODUCTION -->
       <div class="hero-intro relative min-w-0 space-y-6">
+
+        <!-- ONLINE STATUS -->
         <div
           class="hero-status inline-flex items-center gap-3 rounded-full border border-[#33ff00]/25 bg-[#33ff00]/5 px-4 py-2 font-mono text-xs tracking-[0.18em] text-[#33ff00]"
         >
@@ -103,40 +107,51 @@ onUnmounted(() => {
               class="relative inline-flex h-2 w-2 rounded-full bg-[#33ff00]"
             ></span>
           </span>
+
           ONLINE
+
           <span class="h-3 w-px bg-[#33ff00]/30"></span>
           <span class="text-white/40"></span>
         </div>
 
+        <!-- NAME SECTION -->
         <div class="min-w-0 space-y-4">
+
+          <!-- BINARY LABEL -->
           <div class="flex items-center gap-3">
             <span
               class="h-[2px] w-8 rounded-full bg-[#33ff00] shadow-[0_0_10px_rgba(51,255,0,0.8)]"
             ></span>
+
             <span
               class="font-mono text-[10px] tracking-[0.25em] text-[#33ff00]/60"
             >
-              USER_PROFILE
+              110100101111101010101011110101010101010
             </span>
           </div>
 
+          <!-- NAME -->
           <div class="hero-name-wrap relative">
             <h1
               aria-label="Cyril John Paul Larga"
-              class="hero-name relative w-full min-w-0 font-black leading-[0.98] tracking-[-0.065em]"
+              class="hero-name relative w-full min-w-0"
             >
-              <span class="name-first block">
+              <span class="name-first">
                 <ScrambleText text="Cyril John" />
               </span>
 
-              <span
-                class="name-second mt-2 flex flex-wrap items-baseline gap-x-3"
-              >
-                <span><ScrambleText text="Paul" /></span>
-                <span><ScrambleText text="Larga" /></span>
+              <span class="name-second">
+                <span>
+                  <ScrambleText text="Paul" />
+                </span>
+
+                <span>
+                  <ScrambleText text="Larga" />
+                </span>
               </span>
             </h1>
 
+            <!-- NEON UNDERLINE -->
             <div
               class="name-underline mt-6 flex h-[3px] w-full max-w-[21rem] overflow-hidden rounded-full"
             >
@@ -144,27 +159,30 @@ onUnmounted(() => {
               <span class="underline-light"></span>
             </div>
 
+            <!-- CORNER DETAIL -->
             <div class="name-corner" aria-hidden="true">
               <span></span>
               <span></span>
             </div>
           </div>
 
+          <!-- PERSONAL MOTTO -->
           <div class="flex flex-wrap items-center gap-3 pt-1">
             <p
               class="font-mono text-xs font-semibold tracking-[0.2em] text-[#33ff00] sm:text-sm"
             >
               LEARN. BUILD. AND EVOLVE.
             </p>
+
             <span class="h-1 w-1 rounded-full bg-white/30"></span>
+
             <span
               class="font-mono text-[10px] tracking-widest text-white/35"
-            >
-              KAIZEN
-            </span>
+            ></span>
           </div>
         </div>
 
+        <!-- DESCRIPTION -->
         <p class="max-w-xl text-sm leading-7 text-white/65 sm:text-base">
           Exploring the world of
           <span class="font-semibold text-white">software development</span>,
@@ -174,12 +192,14 @@ onUnmounted(() => {
           and learning how to build more reliable digital systems.
         </p>
 
+        <!-- ACTION BUTTONS -->
         <div class="flex flex-wrap gap-3 pt-1">
           <NuxtLink
             to="/techstack"
             class="group inline-flex items-center gap-3 rounded-xl border border-[#33ff00]/50 bg-[#33ff00]/10 px-5 py-3 text-sm font-semibold text-[#33ff00] shadow-[0_0_18px_rgba(51,255,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#33ff00] hover:bg-[#33ff00]/15 hover:shadow-[0_0_25px_rgba(51,255,0,0.2)]"
           >
             Explore My Skills
+
             <span
               class="transition-transform duration-300 group-hover:translate-x-1"
             >
@@ -196,17 +216,15 @@ onUnmounted(() => {
           </NuxtLink>
         </div>
 
+        <!-- SYSTEM FOOTER -->
         <div
           class="flex items-center gap-3 pt-3 font-mono text-[9px] tracking-[0.2em] text-white/25"
-        >
-          <span class="text-[#33ff00]/60">SYS://</span>
-          <span>CONTINUOUS DEVELOPMENT</span>
-          <span class="h-px w-8 bg-white/15"></span>
-          <span>2026</span>
-        </div>
+        ></div>
       </div>
 
+      <!-- RIGHT: TERMINAL -->
       <div class="terminal-stage relative mx-auto w-full max-w-md">
+
         <div
           class="absolute -inset-8 rounded-full bg-[#33ff00]/5 blur-3xl"
         ></div>
@@ -214,12 +232,14 @@ onUnmounted(() => {
         <div class="terminal-orbit terminal-orbit-green"></div>
         <div class="terminal-orbit terminal-orbit-red"></div>
 
+        <!-- TERMINAL PANEL -->
         <div
           class="neon-panel terminal-shell relative overflow-hidden rounded-2xl border border-[#33ff00]/25 bg-[#080d0b]/95 p-4 shadow-[0_0_35px_rgba(51,255,0,0.08),0_20px_60px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:p-5"
         >
           <div class="terminal-scan" aria-hidden="true"></div>
           <div class="terminal-border-glow" aria-hidden="true"></div>
 
+          <!-- TERMINAL HEADER -->
           <div
             class="terminal-content relative flex items-center justify-between border-b border-white/10 pb-3"
           >
@@ -229,8 +249,10 @@ onUnmounted(() => {
               <span class="terminal-light terminal-light-green"></span>
             </div>
 
-            <span class="font-mono text-[10px] tracking-[0.2em] text-white/45">
-              SYSTEM_PROFILE.exe
+            <span
+              class="font-mono text-[10px] tracking-[0.2em] text-white/45"
+            >
+              SYSTEM PROFILE
             </span>
 
             <span class="font-mono text-[9px] text-[#33ff00]/60">
@@ -238,6 +260,7 @@ onUnmounted(() => {
             </span>
           </div>
 
+          <!-- TERMINAL CONTENT -->
           <div
             class="terminal-content relative space-y-4 py-4 font-mono text-xs sm:text-sm"
           >
@@ -255,14 +278,17 @@ onUnmounted(() => {
                   <span class="text-[#33ff00]">name:</span>
                   "Cyril Larga",
                 </p>
+
                 <p>
                   <span class="text-[#33ff00]">field:</span>
                   "Information Technology",
                 </p>
+
                 <p>
                   <span class="text-[#33ff00]">focus:</span>
                   "System Defense",
                 </p>
+
                 <p>
                   <span class="text-[#33ff00]">mindset:</span>
                   "Kaizen"
@@ -272,6 +298,7 @@ onUnmounted(() => {
               <p class="text-white">};</p>
             </div>
 
+            <!-- CURRENT INTERESTS -->
             <div class="border-t border-white/10 pt-4">
               <p class="mb-3 text-[#33ff00]/70">// CURRENT INTERESTS</p>
 
@@ -281,6 +308,7 @@ onUnmounted(() => {
                     <span class="text-white/75">Software Development</span>
                     <span class="text-[#33ff00]">01</span>
                   </div>
+
                   <div class="h-1 overflow-hidden rounded-full bg-white/10">
                     <div
                       class="terminal-progress-fill h-full w-[75%] rounded-full bg-[#33ff00] shadow-[0_0_10px_#33ff00]"
@@ -293,6 +321,7 @@ onUnmounted(() => {
                     <span class="text-white/75">Cybersecurity</span>
                     <span class="text-[#33ff00]">02</span>
                   </div>
+
                   <div class="h-1 overflow-hidden rounded-full bg-white/10">
                     <div
                       class="terminal-progress-fill terminal-progress-red h-full w-[60%] rounded-full bg-[#33ff00] shadow-[0_0_10px_#33ff00]"
@@ -305,6 +334,7 @@ onUnmounted(() => {
                     <span class="text-white/75">Technology Systems</span>
                     <span class="text-[#33ff00]">03</span>
                   </div>
+
                   <div class="h-1 overflow-hidden rounded-full bg-white/10">
                     <div
                       class="terminal-progress-fill h-full w-[85%] rounded-full bg-[#33ff00] shadow-[0_0_10px_#33ff00]"
@@ -321,6 +351,7 @@ onUnmounted(() => {
             </div>
           </div>
 
+          <!-- TERMINAL FOOTER -->
           <div
             class="terminal-content relative flex items-center justify-between border-t border-white/10 pt-3 text-[10px] tracking-widest text-white/40"
           >
@@ -329,6 +360,7 @@ onUnmounted(() => {
           </div>
         </div>
 
+        <!-- FLOATING LABEL -->
         <div
           class="terminal-floating-label absolute -bottom-4 -left-3 rounded-lg border border-[#33ff00]/30 bg-[#080d0b] px-3 py-2 font-mono text-[10px] text-[#33ff00] shadow-[0_0_20px_rgba(51,255,0,0.12)] sm:-left-6"
         >
@@ -336,6 +368,7 @@ onUnmounted(() => {
           SYSTEMS THINKER
         </div>
 
+        <!-- LIVE INDICATOR -->
         <div
           class="absolute -right-2 -top-4 font-mono text-[9px] tracking-widest text-[#33ff00]/50 sm:-right-5"
         >
@@ -348,7 +381,9 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* HERO BACKGROUND */
+/* ========================================
+   HERO BACKGROUND
+======================================== */
 
 .hero-page {
   isolation: isolate;
@@ -411,50 +446,134 @@ onUnmounted(() => {
   animation: orbit-rotate 50s linear infinite reverse;
 }
 
-/* NAME TYPOGRAPHY AND LEVITATION */
+/* ========================================
+   LARGE RAJDHANI HERO NAME
+======================================== */
 
 .hero-name-wrap {
-  padding: 0.5rem 0;
+  position: relative;
+  width: 100%;
+  padding: 0.8rem 0;
 }
 
 .hero-name {
-  font-size: clamp(3rem, 6.4vw, 5.2rem);
-  overflow-wrap: normal;
-  color: #baffaa;
-  text-shadow:
-    0 0 8px rgba(51, 255, 0, 0.2),
-    0 0 22px rgba(51, 255, 0, 0.16),
-    0 0 45px rgba(51, 255, 0, 0.08);
+  position: relative;
+  width: 100%;
+  min-width: 0;
+
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(4.5rem, 7.2vw, 7rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+
   animation: name-levitate 4.5s ease-in-out infinite;
   will-change: transform;
 }
 
+/* Both lines inherit EXACTLY the same font size */
+
 .name-first,
 .name-second {
-  color: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.16em;
+
+  width: fit-content;
+  max-width: 100%;
+
+  font-family: "Rajdhani", sans-serif;
+  font-size: inherit !important;
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: inherit;
+
+  background: linear-gradient(
+    105deg,
+    #f0ffeb 0%,
+    #caffb9 15%,
+    #7dff57 35%,
+    #33ff00 55%,
+    #caffb9 75%,
+    #5cff36 100%
+  );
+
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  filter:
+    drop-shadow(0 0 8px rgba(51, 255, 0, 0.45))
+    drop-shadow(0 0 20px rgba(51, 255, 0, 0.22));
+
+  animation: name-gradient 5s linear infinite;
+}
+
+/* Keep ScrambleText typography consistent */
+
+.name-first :deep(*),
+.name-second :deep(*) {
+  font-family: "Rajdhani", sans-serif !important;
+  font-size: inherit !important;
+  font-weight: 700 !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+}
+
+/* Second line spacing */
+
+.name-first {
+  margin: 0;
 }
 
 .name-second {
-  font-size: clamp(3.3rem, 7.1vw, 5.8rem);
+  margin-top: 0.08em;
 }
+
+/* Stronger hover glow */
+
+.hero-name:hover .name-first,
+.hero-name:hover .name-second {
+  filter:
+    drop-shadow(0 0 12px rgba(51, 255, 0, 0.8))
+    drop-shadow(0 0 30px rgba(51, 255, 0, 0.4));
+}
+
+/* ========================================
+   NEON UNDERLINE
+======================================== */
 
 .name-underline {
   position: relative;
+  height: 4px;
+  margin-top: 1.8rem;
+  overflow: hidden;
+  border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 12px rgba(51, 255, 0, 0.08);
 }
 
 .underline-main {
-  width: 70%;
-  background: #33ff00;
-  box-shadow: 0 0 12px #33ff00;
+  width: 75%;
+  background: linear-gradient(90deg, #33ff00, #eaffdf);
+  box-shadow: 0 0 16px #33ff00;
   animation: underline-pulse 4s ease-in-out infinite;
 }
 
 .underline-light {
-  width: 30%;
-  background: rgba(186, 255, 170, 0.45);
+  width: 25%;
+  background: linear-gradient(
+    90deg,
+    rgba(186, 255, 170, 0.45),
+    transparent
+  );
 }
+
+/* ========================================
+   CORNER DETAIL
+======================================== */
 
 .name-corner {
   position: absolute;
@@ -483,7 +602,9 @@ onUnmounted(() => {
   background: #33ff00;
 }
 
-/* TERMINAL */
+/* ========================================
+   TERMINAL
+======================================== */
 
 .terminal-stage {
   isolation: isolate;
@@ -547,7 +668,9 @@ onUnmounted(() => {
   animation: orbit-rotate 15s linear infinite reverse;
 }
 
-/* ANIMATIONS */
+/* ========================================
+   ANIMATIONS
+======================================== */
 
 @keyframes name-levitate {
   0%,
@@ -557,6 +680,16 @@ onUnmounted(() => {
 
   50% {
     transform: translateY(-8px);
+  }
+}
+
+@keyframes name-gradient {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: 200% center;
   }
 }
 
@@ -612,16 +745,30 @@ onUnmounted(() => {
   }
 }
 
-/* RESPONSIVENESS */
+/* ========================================
+   RESPONSIVENESS
+======================================== */
+
+@media (max-width: 1024px) {
+  .hero-name {
+    font-size: clamp(4rem, 8vw, 6rem);
+  }
+}
 
 @media (max-width: 640px) {
   .hero-name {
-    font-size: clamp(2.8rem, 11vw, 4.2rem);
+    font-size: clamp(3.5rem, 12vw, 5rem);
+    line-height: 1;
   }
 
+  .name-first,
   .name-second {
-    font-size: clamp(3rem, 12vw, 4.5rem);
-    gap: 0.45rem;
+    font-size: inherit !important;
+    line-height: 1;
+  }
+
+  .name-underline {
+    margin-top: 1.3rem;
   }
 
   .hero-orbit-one {
@@ -637,13 +784,17 @@ onUnmounted(() => {
   }
 }
 
-/* ACCESSIBILITY */
+/* ========================================
+   ACCESSIBILITY
+======================================== */
 
 @media (prefers-reduced-motion: reduce) {
   .hero-grid,
   .hero-glow,
   .hero-orbit,
   .hero-name,
+  .name-first,
+  .name-second,
   .underline-main,
   .terminal-border-glow,
   .terminal-orbit {
@@ -655,7 +806,10 @@ onUnmounted(() => {
   }
 }
 
-/* TEMPORARY MOBILE ORBIT TEST */
+/* ========================================
+   MOBILE ORBIT TEST
+======================================== */
+
 @media (max-width: 767px) {
   .terminal-orbit-green,
   .terminal-orbit-red {
