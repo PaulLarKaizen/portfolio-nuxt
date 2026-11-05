@@ -103,7 +103,7 @@ onUnmounted(() => {
               class="relative inline-flex h-2 w-2 rounded-full bg-[#33ff00]"
             ></span>
           </span>
-          ACTIVE//
+          ONLINE
           <span class="h-3 w-px bg-[#33ff00]/30"></span>
           <span class="text-white/40"></span>
         </div>
