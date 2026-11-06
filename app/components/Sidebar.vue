@@ -59,9 +59,7 @@ onUnmounted(() => {
       aria-controls="profile-sidebar"
       :aria-label="isSidebarOpen ? 'Close sidebar' : 'Open sidebar'"
       class="cyber-menu-button"
-      :class="{
-  'menu-active': isSidebarOpen,
-}"
+      :class="{ 'menu-active': isSidebarOpen }"
     >
       <span class="menu-icon-frame">
         <span class="menu-icon-lines">
@@ -232,42 +230,6 @@ onUnmounted(() => {
               </svg>
 
               <span>LinkedIn</span>
-            </div>
-
-            <span class="social-arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <!-- GMAIL -->
-          <a
-            href="mailto:cyril.larga@gmail.com"
-            @click="closeSidebar"
-            class="social-link"
-          >
-            <div class="flex min-w-0 items-center gap-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                class="social-icon"
-                aria-hidden="true"
-              >
-                <path
-                  d="M3 18V6.5C3 5.67 3.94 5.2 4.6 5.7L12 11.3l7.4-5.6c.66-.5 1.6-.03 1.6.8V18"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M3 7.5V18h4V10.5M17 10.5V18h4V7.5"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-
-              <span class="truncate">Gmail</span>
             </div>
 
             <span class="social-arrow" aria-hidden="true">↗</span>

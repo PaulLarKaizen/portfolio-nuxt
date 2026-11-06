@@ -13,6 +13,10 @@ const fontSize = 14;
 const columnSpacing = 9;
 const frameInterval = 35;
 
+// Reduced brightness for a softer background.
+const characterOpacity = 0.35;
+const glowIntensity = 6;
+
 let canvasWidth = 0;
 let canvasHeight = 0;
 let columns = 0;
@@ -66,9 +70,14 @@ function drawMatrix() {
   context.fillStyle = "rgba(5, 8, 7, 0.15)";
   context.fillRect(0, 0, canvasWidth, canvasHeight);
 
-  context.fillStyle = "#00FF41";
-  context.shadowBlur = 12;
-  context.shadowColor = "#00FF41";
+  // Softer Matrix characters.
+  context.globalAlpha = characterOpacity;
+  context.fillStyle = "#00CC36";
+
+  // Reduced glow to prevent excessive brightness.
+  context.shadowBlur = glowIntensity;
+  context.shadowColor = "rgba(0, 204, 54, 0.45)";
+
   context.font = `900 ${fontSize}px monospace`;
 
   for (let i = 0; i < columns; i++) {
@@ -87,6 +96,7 @@ function drawMatrix() {
     drops[i] = (drops[i] ?? 0) + 1;
   }
 
+  context.globalAlpha = 1;
   context.shadowBlur = 0;
 }
 
