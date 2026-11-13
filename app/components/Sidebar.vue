@@ -107,7 +107,7 @@ onUnmounted(() => {
         : '-translate-x-full lg:translate-x-0'
     "
   >
-    <!-- MOBILE DRAWER HEADER -->
+    <!-- DRAWER HEADER MOBILE -->
     <div class="mb-8 flex items-center justify-between lg:hidden">
       <div>
         <p class="font-mono text-xs font-bold tracking-[0.3em] text-[#33ff00]">
@@ -345,9 +345,7 @@ onUnmounted(() => {
   outline-offset: 4px;
 }
 
-/* ========================================
-   BUTTON TRAVEL ANIMATION
-======================================== */
+/*BUTTON ANIMATION*/
 
 .cyber-menu-button.menu-active {
   z-index: 110;
@@ -357,9 +355,7 @@ onUnmounted(() => {
     translateY(-88px);
 }
 
-/* ========================================
-   HAMBURGER TO X ANIMATION
-======================================== */
+/*HAMBURGER ANIMATION*/
 
 .menu-icon-frame {
   position: relative;
@@ -488,9 +484,7 @@ onUnmounted(() => {
   }
 }
 
-/* ========================================
-   BACKDROP
-======================================== */
+/*BACKDROP*/
 
 .cyber-backdrop-enter-active,
 .cyber-backdrop-leave-active {
@@ -502,9 +496,7 @@ onUnmounted(() => {
   opacity: 0;
 }
 
-/* ========================================
-   PROFILE PHOTO
-======================================== */
+/*PROFILE PHOTO*/
 
 .profile-frame {
   position: relative;
@@ -634,9 +626,7 @@ onUnmounted(() => {
   }
 }
 
-/* ========================================
-   SIDEBAR ELEMENTS
-======================================== */
+/*SIDEBAR ELEMENTS*/
 
 .section-line {
   width: 100%;
@@ -657,9 +647,7 @@ onUnmounted(() => {
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* ========================================
-   SOCIAL LINKS
-======================================== */
+/*SOCIAL LINKS*/
 
 .social-link {
   display: flex;
@@ -709,9 +697,7 @@ onUnmounted(() => {
   transform: translate(2px, -2px);
 }
 
-/* ========================================
-   ACCESSIBILITY
-======================================== */
+/*ACCESSIBILITY*/
 
 @media (prefers-reduced-motion: reduce) {
   .profile-frame::before,

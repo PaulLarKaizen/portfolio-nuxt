@@ -145,7 +145,7 @@ const verificationUrl =
             {{ certificate.issuer }}
           </p>
 
-          <!-- Verification Code -->
+          <!-- Verification Codes -->
           <div class="mt-6 rounded-xl border border-[#33ff00]/20 bg-black/30 p-4">
             <p
               class="mb-2 font-mono text-[10px] tracking-[0.2em] text-[#33ff00]/60"
@@ -158,7 +158,7 @@ const verificationUrl =
             </p>
           </div>
 
-          <!-- Verification Link -->
+          <!-- Verification Links -->
           <a
             :href="verificationUrl"
             target="_blank"

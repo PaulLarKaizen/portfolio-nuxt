@@ -381,9 +381,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* ========================================
-   HERO BACKGROUND
-======================================== */
+/*HERO BACKGROUND*/
 
 .hero-page {
   isolation: isolate;
@@ -446,9 +444,7 @@ onUnmounted(() => {
   animation: orbit-rotate 50s linear infinite reverse;
 }
 
-/* ========================================
-   LARGE RAJDHANI HERO NAME
-======================================== */
+/*LARGE HERO NAME */
 
 .hero-name-wrap {
   position: relative;
@@ -470,8 +466,6 @@ onUnmounted(() => {
   animation: name-levitate 4.5s ease-in-out infinite;
   will-change: transform;
 }
-
-/* Both lines inherit EXACTLY the same font size */
 
 .name-first,
 .name-second {
@@ -511,8 +505,6 @@ onUnmounted(() => {
   animation: name-gradient 5s linear infinite;
 }
 
-/* Keep ScrambleText typography consistent */
-
 .name-first :deep(*),
 .name-second :deep(*) {
   font-family: "Rajdhani", sans-serif !important;
@@ -541,9 +533,7 @@ onUnmounted(() => {
     drop-shadow(0 0 30px rgba(51, 255, 0, 0.4));
 }
 
-/* ========================================
-   NEON UNDERLINE
-======================================== */
+/*NEON UNDERLINE*/
 
 .name-underline {
   position: relative;
@@ -571,9 +561,7 @@ onUnmounted(() => {
   );
 }
 
-/* ========================================
-   CORNER DETAIL
-======================================== */
+/*CORNER DETAIL*/
 
 .name-corner {
   position: absolute;
@@ -602,9 +590,7 @@ onUnmounted(() => {
   background: #33ff00;
 }
 
-/* ========================================
-   TERMINAL
-======================================== */
+/*TERMINAL*/
 
 .terminal-stage {
   isolation: isolate;
@@ -668,9 +654,7 @@ onUnmounted(() => {
   animation: orbit-rotate 15s linear infinite reverse;
 }
 
-/* ========================================
-   ANIMATIONS
-======================================== */
+/*ANIMATIONS*/
 
 @keyframes name-levitate {
   0%,
@@ -745,9 +729,7 @@ onUnmounted(() => {
   }
 }
 
-/* ========================================
-   RESPONSIVENESS
-======================================== */
+/*RESPONSIVENESS*/
 
 @media (max-width: 1024px) {
   .hero-name {
@@ -784,9 +766,7 @@ onUnmounted(() => {
   }
 }
 
-/* ========================================
-   ACCESSIBILITY
-======================================== */
+/*ACCESSIBILITY*/
 
 @media (prefers-reduced-motion: reduce) {
   .hero-grid,
@@ -806,9 +786,7 @@ onUnmounted(() => {
   }
 }
 
-/* ========================================
-   MOBILE ORBIT TEST
-======================================== */
+/*MOBILE ORBIT TEST*/
 
 @media (max-width: 767px) {
   .terminal-orbit-green,

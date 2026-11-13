@@ -4,9 +4,7 @@
 @plugin "daisyui";
 
 
-/* ========================================
-   GLOBAL PAGE ANIMATIONS
-======================================== */
+/*GLOBAL PAGE ANIMATIONS */
 
 @keyframes pageEnter {
   from {
@@ -72,9 +70,7 @@
   animation-delay: 0.33s;
 }
 
-/* ========================================
-   NEON PANELS AND CARDS
-======================================== */
+/*PANELS AND CARDS*/
 
 .neon-panel {
   position: relative;
@@ -135,9 +131,7 @@
   opacity: 1;
 }
 
-/* ========================================
-   INTERACTIVE NEON ELEMENTS
-======================================== */
+/*INTERACTIVE NEON ELEMENTS*/
 
 .neon-interactive {
   transition:
@@ -158,9 +152,7 @@
   animation: glowLine 0.8s ease-out both;
 }
 
-/* ========================================
-   SYSTEM PROFILE TERMINAL ANIMATIONS
-======================================== */
+/*SYSTEM PROFILE TERMINAL ANIMATIONS*/
 
 /* Green and red terminal breathing glow */
 @keyframes terminalGlow {
@@ -379,9 +371,7 @@
   animation: terminalOnline 1.8s ease-in-out infinite;
 }
 
-/* ========================================
-   ACCESSIBILITY
-======================================== */
+/*ACCESSIBILITY*/
 
 @media (prefers-reduced-motion: reduce) {
   *,

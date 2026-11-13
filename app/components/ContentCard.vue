@@ -10,7 +10,7 @@ defineProps<{
   <section
     class="neon-card card relative rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.25)] md:p-8"
   >
-    <!-- Decorative accent -->
+    <!-- Accent -->
     <div
       class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#33ff00] to-rose-500/70 opacity-70 transition-opacity duration-300 group-hover:opacity-100"
     ></div>
@@ -30,7 +30,7 @@ defineProps<{
         </h2>
       </div>
 
-      <!-- Content supplied by each page -->
+      <!-- Content by each page -->
       <div class="text-sm leading-7 text-white/70 md:text-base">
         <slot />
       </div>

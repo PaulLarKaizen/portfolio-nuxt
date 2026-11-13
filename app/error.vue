@@ -43,9 +43,9 @@ const errorDescription = computed(() => {
 
 const attemptedPath = computed(() => route.fullPath || "/unknown");
 
-// ========================================
+//
 // RED MATRIX BACKGROUND
-// ========================================
+//
 
 let canvas: HTMLCanvasElement | null = null;
 let context: CanvasRenderingContext2D | null = null;
@@ -367,7 +367,7 @@ onUnmounted(() => {
           <p
             class="font-mono text-[0.6rem] tracking-wider text-[#33ff00]/50"
           >
-            CONNECTION TERMINATED \_
+            CONNECTION TERMINATED \
           </p>
         </div>
       </div>

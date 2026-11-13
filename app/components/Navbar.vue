@@ -100,7 +100,7 @@ function closeMenu() {
           </li>
         </ul>
 
-        <!-- MOBILE MENU BUTTON -->
+        <!-- MENU BUTTON MOBILE -->
         <button
           class="btn btn-ghost btn-sm shrink-0 rounded-xl border border-[#33ff00]/40 px-3 font-mono text-[0.65rem] tracking-widest text-[#33ff00] shadow-[0_0_10px_rgba(51,255,0,0.12)] transition-all duration-300 hover:border-[#33ff00] hover:bg-[#33ff00]/10 hover:text-white hover:shadow-[0_0_18px_rgba(51,255,0,0.35)] md:hidden"
           type="button"
@@ -114,7 +114,7 @@ function closeMenu() {
       </div>
     </nav>
 
-    <!-- ANIMATED MOBILE BUTTON PANEL -->
+    <!-- BUTTON PANEL MOBILE -->
     <Transition
       enter-active-class="transition-all duration-400 ease-out"
       enter-from-class="translate-y-3 scale-[0.96] opacity-0 blur-sm"
