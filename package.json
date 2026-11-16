@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "daisyui": "^5.7.50",
     "echarts": "^6.1.0",
+    "lucide-vue-next": "^1.0.0",
     "nuxt": "^4.5.2",
     "simple-icons": "^16.36.0",
     "tailwindcss": "^4.3.3",

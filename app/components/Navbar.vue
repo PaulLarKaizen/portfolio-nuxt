@@ -4,10 +4,15 @@ const isMenuOpen = useState<boolean>("mobile-navbar-open", () => false);
 const isSidebarOpen = useState<boolean>("profile-sidebar-open", () => false);
 
 const links = [
-  { label: "Home", path: "/", number: "" },
-  { label: "About", path: "/about", number: "" },
-  { label: "Tech Stack", path: "/techstack", number: "" },
-  { label: "Certifications", path: "/certifications", number: "" },
+  { label: "Home", path: "/", icon: "/icons/home.svg", number: "" },
+  { label: "About", path: "/about", icon: "/icons/about.svg", number: "" },
+  { label: "Tech Stack", path: "/techstack", icon: "/icons/techstack.svg", number: "" },
+  {
+    label: "Certifications",
+    path: "/certifications",
+    icon: "/icons/certifications.svg",
+    number: "",
+  },
 ];
 
 const route = useRoute();
@@ -79,13 +84,34 @@ function closeMenu() {
           <li v-for="link in links" :key="link.path">
             <NuxtLink
               :to="link.path"
-              class="relative py-2 text-[0.7rem] font-bold uppercase tracking-wider text-[#33ff00] transition-all duration-300 hover:text-white hover:drop-shadow-[0_0_12px_rgba(51,255,0,1)]"
+              class="group relative flex items-center gap-2 py-2 text-[0.7rem] font-bold uppercase tracking-wider text-[#33ff00] transition-all duration-300 hover:text-white hover:drop-shadow-[0_0_12px_rgba(51,255,0,1)]"
               :class="
                 route.path === link.path
                   ? 'text-white drop-shadow-[0_0_12px_rgba(51,255,0,1)]'
                   : ''
               "
             >
+              <!-- LOCAL SVG ICON -->
+              <span
+                aria-hidden="true"
+                class="h-4 w-4 shrink-0 bg-current transition-all duration-300 group-hover:text-rose-400"
+                :class="
+                  route.path === link.path
+                    ? 'text-rose-500'
+                    : 'text-[#33ff00]'
+                "
+                :style="{
+                  maskImage: `url('${link.icon}')`,
+                  WebkitMaskImage: `url('${link.icon}')`,
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                  WebkitMaskPosition: 'center',
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                }"
+              ></span>
+
               {{ link.label }}
 
               <span
@@ -102,19 +128,35 @@ function closeMenu() {
 
         <!-- MENU BUTTON MOBILE -->
         <button
-          class="btn btn-ghost btn-sm shrink-0 rounded-xl border border-[#33ff00]/40 px-3 font-mono text-[0.65rem] tracking-widest text-[#33ff00] shadow-[0_0_10px_rgba(51,255,0,0.12)] transition-all duration-300 hover:border-[#33ff00] hover:bg-[#33ff00]/10 hover:text-white hover:shadow-[0_0_18px_rgba(51,255,0,0.35)] md:hidden"
+          class="btn btn-ghost btn-sm shrink-0 gap-2 rounded-xl border border-[#33ff00]/40 px-3 font-mono text-[0.65rem] tracking-widest text-[#33ff00] shadow-[0_0_10px_rgba(51,255,0,0.12)] transition-all duration-300 hover:border-[#33ff00] hover:bg-[#33ff00]/10 hover:text-white hover:shadow-[0_0_18px_rgba(51,255,0,0.35)] md:hidden"
           type="button"
           :aria-expanded="isMenuOpen"
           aria-label="Toggle navigation menu"
           aria-controls="mobile-navigation"
           @click="toggleMenu"
         >
+          <!-- LOCAL MENU / CLOSE SVG -->
+          <span
+            aria-hidden="true"
+            class="h-4 w-4 shrink-0 bg-current"
+            :style="{
+              maskImage: `url('${isMenuOpen ? '/icons/close.svg' : '/icons/menu.svg'}')`,
+              WebkitMaskImage: `url('${isMenuOpen ? '/icons/close.svg' : '/icons/menu.svg'}')`,
+              maskRepeat: 'no-repeat',
+              WebkitMaskRepeat: 'no-repeat',
+              maskPosition: 'center',
+              WebkitMaskPosition: 'center',
+              maskSize: 'contain',
+              WebkitMaskSize: 'contain',
+            }"
+          ></span>
+
           {{ isMenuOpen ? "CLOSE" : "MENU" }}
         </button>
       </div>
     </nav>
 
-    <!-- BUTTON PANEL MOBILE -->
+    <!-- MOBILE NAVIGATION PANEL -->
     <Transition
       enter-active-class="transition-all duration-400 ease-out"
       enter-from-class="translate-y-3 scale-[0.96] opacity-0 blur-sm"
@@ -129,20 +171,23 @@ function closeMenu() {
         class="absolute right-0 top-[calc(100%+0.65rem)] z-[55] w-64 overflow-hidden rounded-2xl border border-[#33ff00]/35 bg-[#07100b]/95 p-3 shadow-[0_0_25px_rgba(51,255,0,0.16),0_15px_40px_rgba(0,0,0,0.55)] backdrop-blur-2xl md:hidden"
       >
         <!-- PANEL HEADER -->
-        <div class="mb-3 flex items-center justify-between border-b border-[#33ff00]/15 px-2 pb-3">
+        <div
+          class="mb-3 flex items-center justify-between border-b border-[#33ff00]/15 px-2 pb-3"
+        >
           <div class="flex flex-col gap-1">
-            <span class="font-mono text-[0.55rem] font-bold tracking-[0.25em] text-white/35">
-             
-            </span>
-            <span class="font-mono text-xs font-bold tracking-widest text-[#33ff00]">
+            <span
+              class="font-mono text-xs font-bold tracking-widest text-[#33ff00]"
+            >
               SELECT MODULE
             </span>
           </div>
 
-          <span class="h-2 w-2 animate-pulse rounded-full bg-[#33ff00] shadow-[0_0_10px_#33ff00]"></span>
+          <span
+            class="h-2 w-2 animate-pulse rounded-full bg-[#33ff00] shadow-[0_0_10px_#33ff00]"
+          ></span>
         </div>
 
-        <!-- NAVIGATION BUTTONS -->
+        <!-- MOBILE NAVIGATION BUTTONS -->
         <div class="flex flex-col gap-2">
           <NuxtLink
             v-for="link in links"
@@ -156,6 +201,7 @@ function closeMenu() {
             "
             @click="closeMenu"
           >
+            <!-- ACTIVE INDICATOR -->
             <span
               class="absolute left-0 top-0 h-full w-[3px] rounded-full bg-[#33ff00] transition-all duration-300"
               :class="
@@ -165,6 +211,7 @@ function closeMenu() {
               "
             ></span>
 
+            <!-- NAVIGATION NUMBER -->
             <span
               class="font-mono text-[0.6rem] font-bold tracking-wider transition-colors duration-300"
               :class="
@@ -176,6 +223,28 @@ function closeMenu() {
               {{ link.number }}
             </span>
 
+            <!-- LOCAL SVG ICON -->
+            <span
+              aria-hidden="true"
+              class="h-4 w-4 shrink-0 bg-current transition-all duration-300 group-hover:text-rose-400"
+              :class="
+                route.path === link.path
+                  ? 'text-rose-500'
+                  : 'text-[#33ff00]'
+              "
+              :style="{
+                maskImage: `url('${link.icon}')`,
+                WebkitMaskImage: `url('${link.icon}')`,
+                maskRepeat: 'no-repeat',
+                WebkitMaskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                WebkitMaskPosition: 'center',
+                maskSize: 'contain',
+                WebkitMaskSize: 'contain',
+              }"
+            ></span>
+
+            <!-- NAVIGATION LABEL -->
             <span
               class="flex-1 font-mono text-[0.68rem] font-bold uppercase tracking-[0.13em] transition-all duration-300"
               :class="
@@ -187,6 +256,7 @@ function closeMenu() {
               {{ link.label }}
             </span>
 
+            <!-- ARROW INDICATOR -->
             <span
               class="font-mono text-sm transition-all duration-300"
               :class="
@@ -201,11 +271,16 @@ function closeMenu() {
         </div>
 
         <!-- PANEL FOOTER -->
-        <div class="mt-3 flex items-center justify-between border-t border-[#33ff00]/15 px-2 pt-3">
-          <span class="font-mono text-[0.5rem] tracking-widest text-white/25">
-            
-          </span>
-          <span class="font-mono text-[0.5rem] tracking-widest text-[#33ff00]/50">
+        <div
+          class="mt-3 flex items-center justify-between border-t border-[#33ff00]/15 px-2 pt-3"
+        >
+          <span
+            class="font-mono text-[0.5rem] tracking-widest text-white/25"
+          ></span>
+
+          <span
+            class="font-mono text-[0.5rem] tracking-widest text-[#33ff00]/50"
+          >
             Select
           </span>
         </div>
